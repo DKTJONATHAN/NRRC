@@ -3,8 +3,14 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'Roboto', sans-serif;
-    background-color: #e4bf1a; /* Light grey background, professional look */
-    color: #14171a; /* Dark text color for readability */
+    background-image: url('./images/background.jpg'); /* Path to your downloaded image */
+    background-color: #e4bf1a; /* Fallback color in case the image fails to load */
+    background-size: cover; /* Ensures the image stretches and covers the entire viewport */
+    background-position: center center; /* Centers the image */
+    background-repeat: repeat; /* Repeats the image to cover the entire page */
+    min-height: 100%; /* Ensure the background covers the entire height of the page, even if content is longer */
+    width: 100%; /* Ensures the background covers the full width of the viewport */
+    color: #ffffff; /* Dark text color for readability */
     line-height: 1.6;
 }
 
@@ -15,13 +21,54 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 a {
-    color: #ffffff; /* Twitter blue for links */
+    color: #ffffff; /* White links */
     text-decoration: none;
 }
 
 a:hover {
     text-decoration: underline;
 }
+
+/* Additional Section Styles */
+.section {
+    padding: 40px 20px;
+    background-color: transparent; /* Make sections' background transparent so the texture shows through */
+    margin: 20px 0;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(255, 253, 253, 0.05); /* Subtle shadow for sections */
+    text-align: center;
+}
+/* Add a golden shiny effect over the background */
+body::before {
+    content: ''; /* Empty content for the pseudo-element */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(255, 223, 0, 0.5) 10%, rgba(255, 215, 0, 0) 70%); /* Golden color with fading edges */
+    pointer-events: none; /* Ensures the shine effect does not interfere with user interaction */
+    animation: shineAnimation 10s infinite linear; /* Slower shimmering animation */
+    z-index: -1; /* Places the shiny effect below all content */
+}
+
+/* Shining animation */
+@keyframes shineAnimation {
+    0% {
+        transform: scale(1) translateX(-100%); /* Start off-screen */
+        opacity: 0.6;
+    }
+    50% {
+        transform: scale(1.1) translateX(100%); /* Move to the opposite side */
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(1) translateX(-100%); /* Move back off-screen */
+        opacity: 0.6;
+    }
+}
+
+
 
 /* Splash Screen */
 #splash-screen {
@@ -138,10 +185,10 @@ header {
 /* Sections */
 .section {
     padding: 40px 20px;
-    background-color: #e4bf1a; /* Clean white background for sections */
+    background-color: #000000; /* Clean white background for sections */
     margin: 20px 0;
     border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Subtle shadow for section */
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.05); /* Subtle shadow for section */
     text-align: center;
 }
 
@@ -250,7 +297,7 @@ footer {
 
 /* Icons */
 .fas, .fab {
-    color: #000000; 
+    color: #c2b9b9; 
     margin-right: 10px;
     transition: color 0.3s ease;
 }
@@ -345,7 +392,7 @@ img:hover {
 }
 #manifesto {
     padding: 20px;
-    background-color: #e4bf1a; /* Light background for the manifesto section */
+    background-color: #000000; /* Light background for the manifesto section */
     margin: 20px 0;
 }
 
