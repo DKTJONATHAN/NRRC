@@ -321,3 +321,97 @@ footer:hover {
 .section:nth-child(even).active {
     transform: translateX(0);
 }
+
+/* Additional Styles for Merchandise Section */
+.merchandise-slider {
+    display: flex;
+    overflow-x: auto;
+    gap: 20px;
+    padding: 20px 0;
+    scroll-snap-type: x mandatory;
+    justify-content: flex-start;
+    align-items: center; /* Align images vertically to the center */
+    background-color: #0000004d; /* Black background */
+    border-radius: 40px; /* Rounded corners */
+    box-shadow: 0 8px 24px rgba(255, 255, 255, 0.1); /* Soft glow effect */
+    transition: all 0.3s ease; /* Smooth transitions for hover effects */
+}
+
+.merchandise-slider:hover {
+    transform: scale(1.02); /* Slight zoom on hover */
+    box-shadow: 0 12px 32px rgba(255, 255, 255, 0.2); /* Enhanced glow on hover */
+}
+
+.merchandise-slider .merchandise-track {
+    display: flex;
+    flex-direction: row; /* Ensures the images are arranged horizontally */
+}
+
+.merchandise-slider img {
+    width: 250px; /* Adjust image size to fit better on desktop */
+    height: 200px; /* Consistent height */
+    border-radius: 10px;
+    object-fit: cover;  /* Clean fit */
+    scroll-snap-align: start;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.merchandise-slider img:hover {
+    transform: scale(1.05); /* Subtle zoom */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Soft shadow on hover */
+}
+
+.merchandise-slider p {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 1rem;
+}
+
+/* Responsive Design for smaller screens */
+@media (max-width: 768px) {
+    .merchandise-slider img {
+        width: 150px; /* Smaller images on mobile */
+        height: 150px; /* Consistent height */
+    }
+}
+
+/* Manifesto Section */
+#manifesto {
+    padding: 20px;
+    background-color: #0000002a; /* Black background for the manifesto section */
+    margin: 20px 0;
+    border-radius: 30px 60px 30px 60px; /* Asymmetric rounded corners */
+    box-shadow: 0 8px 24px rgba(255, 255, 255, 0.1); /* Soft glow effect */
+    transition: all 0.3s ease; /* Smooth transitions for hover effects */
+}
+
+#manifesto:hover {
+    transform: scale(1.02); /* Slight zoom on hover */
+    box-shadow: 0 12px 32px rgba(255, 255, 255, 0.2); /* Enhanced glow on hover */
+}
+
+#manifesto h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+#manifesto h3 {
+    font-size: 1.5rem;
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+#manifesto p {
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+/* Reduce opacity of black sections to 30% except for header and footer */
+.section,
+.image-scroll-container,
+.party-structure-grid,
+.gallery,
+.merchandise-slider,
+#manifesto {
+    background-color: rgba(0, 0, 0, 0.3) !important; /* 30% opacity */
+}
