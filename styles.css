@@ -1,4 +1,4 @@
-body {
+ {
     margin: 0;
     padding: 0;
     font-family: 'Roboto', sans-serif;
@@ -13,48 +13,8 @@ body {
     line-height: 1.6;
     position: relative; /* To position the glitter effect */
 }
-@keyframes slideIn {
-    from {
-        opacity: 0;
-        transform: translateX(-100%);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
 
-@keyframes slideInEven {
-    from {
-        opacity: 0;
-        transform: translateX(100%);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-@media (max-width: 768px) {
-    #splash-screen img {
-        width: 100px; /* Smaller logo for mobile */
-        height: 100px;
-    }
 
-    .section {
-        padding: 40px 10px; /* Adjust padding for smaller screens */
-        margin: 20px auto; /* Reduce margin for mobile */
-    }
-
-    .structure-member img,
-    .gallery img,
-    .merchandise-slider img {
-        height: 150px; /* Consistent image height for mobile */
-    }
-
-    .merchandise-slider img {
-        width: 150px; /* Smaller images for mobile */
-    }
-}
 /* Glitter Effect */
 .glitter {
     position: absolute;
@@ -70,30 +30,18 @@ body {
 /* Neon Glow for Borders and Text */
 /* Bubbly, dynamic shape for sections */
 .section {
-    padding: 60px 20px;
-    margin: 40px auto; /* Center sections and add vertical spacing */
-    background-color: rgba(0, 0, 0, 0.3);
-    border-radius: 30px 60px 30px 60px;
-    box-shadow: 0 8px 24px rgba(255, 255, 255, 0.1);
+    padding: 40px 20px;
+    background-color: rgba(0, 0, 0, 0.9); /* Dark background */
+    margin: 20px 0;
+    color: #ffffff;
     text-align: center;
+    position: relative;
+    overflow: hidden; /* Prevents text from spilling out */
     transition: all 0.3s ease;
-    max-width: 1200px; /* Prevent sections from becoming too wide */
-    opacity: 0; /* Hide sections initially for scroll animation */
-    transform: translateX(-100%); /* Start off-screen for scroll animation */
-    transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-.section.active {
-    opacity: 1; /* Show section when active */
-    transform: translateX(0); /* Slide into view */
-}
-
-.section:nth-child(even) {
-    transform: translateX(100%); /* Alternate slide direction for even sections */
-}
-
-.section:nth-child(even).active {
-    transform: translateX(0); /* Slide into view */
+    
+    /* Applying a dynamic, bubbly shape */
+    border-radius: 50px 200px 50px 200px; /* Larger radius on top-left and bottom-right for bubble effect */
+    box-shadow: 0 8px 24px rgba(255, 255, 255, 0.1); /* Soft glow effect */
 }
 
 /* Hover effect for sections */
@@ -449,11 +397,8 @@ footer:hover {
 
 /* Global Image Styles */
 img {
-    border-radius: 15px; /* Rounded corners */
-    object-fit: cover; /* Prevent cropping */
-    width: 100%; /* Responsive width */
-    height: auto; /* Maintain aspect ratio */
-    max-width: 300px; /* Consistent maximum size */
+    border-radius: 10px;  /* Rounded corners for images */
+    object-fit: cover;  /* Ensure professional image presentation */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -461,6 +406,7 @@ img:hover {
     transform: scale(1.05); /* Subtle zoom on hover */
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Soft shadow */
 }
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .site-title {
