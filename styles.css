@@ -1,20 +1,19 @@
-/* General Styles */
 body {
     margin: 0;
     padding: 0;
     font-family: 'Roboto', sans-serif;
     background: linear-gradient(45deg, #ffd700, #ffcc00, #b8860b, #daa520); /* Gold gradient */
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    min-height: 100vh;
-    width: 100%;
-    color: #ffffff;
+    background-size: cover; /* Ensures the background stretches and covers the entire viewport */
+    background-position: center center; /* Centers the background */
+    background-repeat: no-repeat; /* No repeat */
+    background-attachment: fixed; /* Fixes the background, preventing it from scrolling */
+    min-height: 100vh; /* Ensure the background covers the entire height of the page */
+    width: 100%; /* Ensure the background covers the full width of the viewport */
+    color: #ffffff; /* Dark text color for readability */
     line-height: 1.6;
-    position: relative;
-    overflow-x: hidden; /* Prevent horizontal scroll */
+    position: relative; /* To position the glitter effect */
 }
+
 
 /* Glitter Effect */
 .glitter {
@@ -25,10 +24,40 @@ body {
     height: 100%;
     background: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100"%3E%3Ccircle cx="10" cy="10" r="2" fill="%23ffd700" /%3E%3Ccircle cx="30" cy="20" r="2" fill="%23ffd700" /%3E%3Ccircle cx="50" cy="10" r="2" fill="%23ffd700" /%3E%3Ccircle cx="70" cy="30" r="2" fill="%23ffd700" /%3E%3Ccircle cx="90" cy="10" r="2" fill="%23ffd700" /%3E%3C/svg%3E') repeat;
     animation: glitterFall 2s linear infinite;
-    pointer-events: none;
-    z-index: -1;
+    pointer-events: none; /* Ensures the glitter doesn't interfere with other interactions */
+    z-index: -1; /* Make sure glitter is behind content */
+}
+/* Neon Glow for Borders and Text */
+/* Bubbly, dynamic shape for sections */
+.section {
+    padding: 40px 20px;
+    background-color: rgba(0, 0, 0, 0.9); /* Dark background */
+    margin: 20px 0;
+    color: #ffffff;
+    text-align: center;
+    position: relative;
+    overflow: hidden; /* Prevents text from spilling out */
+    transition: all 0.3s ease;
+    
+    /* Applying a dynamic, bubbly shape */
+    border-radius: 50px 200px 50px 200px; /* Larger radius on top-left and bottom-right for bubble effect */
+    box-shadow: 0 8px 24px rgba(255, 255, 255, 0.1); /* Soft glow effect */
 }
 
+/* Hover effect for sections */
+.section:hover {
+    transform: scale(1.05); /* Slight zoom on hover */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4), 0 0 10px #ffd700; /* Neon golden glow */
+}
+
+
+.section:hover {
+    transform: scale(1.05); /* Slight zoom on hover */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4), 0 0 10px #ffd700; /* Neon golden glow */
+}
+
+
+/* Glitter Animation */
 @keyframes glitterFall {
     0% {
         transform: translateY(-100%);
@@ -40,20 +69,51 @@ body {
     }
 }
 
-/* Typography */
+/* Rest of your CSS remains the same */
+
+
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Playfair Display', serif;
-    color: #ffffff;
+    color: #ffffff; /* Dark headings for a professional feel */
     margin: 0 0 1rem 0;
 }
 
 a {
-    color: #ffffff;
+    color: #ffffff; /* White links */
     text-decoration: none;
 }
 
 a:hover {
     text-decoration: underline;
+}
+
+/* Additional Section Styles */
+.section {
+    padding: 40px 20px;
+    background-color: transparent; /* Make sections' background transparent so the texture shows through */
+    margin: 20px 0;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(255, 253, 253, 0.05); /* Subtle shadow for sections */
+    text-align: center;
+}
+
+/* Add a golden shiny effect over the background */
+body::before {
+    content: ''; /* Empty content for the pseudo-element */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(
+        circle, 
+        rgba(255, 223, 0, 0.6) 10%, /* Increased opacity for more visibility */
+        rgba(255, 215, 0, 0) 70% /* Smooth transition to transparent */
+    );
+    pointer-events: none; /* Ensures the shine effect does not interfere with user interaction */
+    animation: shineAnimation 10s infinite linear; /* Slower shimmering animation */
+    z-index: -1; /* Places the shiny effect below all content */
+    filter: blur(10px); /* Soften the edges of the gradient */
 }
 
 /* Splash Screen */
@@ -63,18 +123,11 @@ a:hover {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: transparent;
-    color: #ffffff;
+    background-color: transparent; /* Remove black background */
+    color: #ffffff; /* White text */
     text-align: center;
     position: relative;
     overflow: hidden;
-}
-
-#splash-screen img {
-    width: 150px; /* Adjusted for mobile */
-    height: 150px; /* Adjusted for mobile */
-    border-radius: 50%;
-    animation: zoomInOut 3s infinite;
 }
 
 @keyframes zoomInOut {
@@ -100,27 +153,27 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 20px 0;
-    background-color: #000000;
-    border-bottom: 1px solid #e1e8ed;
-    border-radius: 0 0 60px 60px;
-    box-shadow: 0 8px 24px rgba(255, 255, 255, 0.1);
-    transition: all 0.3s ease;
+    background-color: #000000; /* Black header */
+    border-bottom: 1px solid #e1e8ed; /* Light gray bottom border for separation */
+    border-radius: 0 0 60px 60px; /* Rounded bottom corners for header */
+    box-shadow: 0 8px 24px rgba(255, 255, 255, 0.1); /* Soft glow effect */
+    transition: all 0.3s ease; /* Smooth transitions for hover effects */
 }
 
 header:hover {
-    transform: scale(1.02);
-    box-shadow: 0 12px 32px rgba(255, 255, 255, 0.2);
+    transform: scale(1.02); /* Slight zoom on hover */
+    box-shadow: 0 12px 32px rgba(255, 255, 255, 0.2); /* Enhanced glow on hover */
 }
 
 .logo {
-    width: 100px;
-    height: 100px;
+    width: 100px; /* Adjusted logo size */
+    height: 100px; /* Adjusted logo size */
     border-radius: 50%;
 }
 
 .site-title {
     font-size: 2.5rem;
-    color: #ffffff;
+    color: #ffffff; /* White text for the site title */
     text-align: center;
     flex-grow: 1;
 }
@@ -134,7 +187,7 @@ header:hover {
 .bar {
     width: 25px;
     height: 3px;
-    background-color: #ffffff;
+    background-color: #ffffff; /* White bars */
     margin: 4px 0;
 }
 
@@ -143,12 +196,12 @@ header:hover {
     position: absolute;
     top: 80px;
     right: 20px;
-    background-color: #00000042;
+    background-color: #00000042; /* Black background for menu */
     padding: 10px;
-    border-radius: 20px 40px 20px 40px;
+    border-radius: 20px 40px 20px 40px; /* Asymmetric rounded corners */
     z-index: 1000;
-    box-shadow: 0 8px 24px rgba(255, 255, 255, 0.1);
-    transition: all 0.3s ease;
+    box-shadow: 0 8px 24px rgba(255, 255, 255, 0.1); /* Soft glow effect */
+    transition: all 0.3s ease; /* Smooth transitions for hover effects */
 }
 
 .nav-menu.active {
@@ -166,35 +219,32 @@ header:hover {
 }
 
 .nav-menu ul li a {
-    color: #ffffff;
+    color: #ffffff; /* White text for links */
     font-size: 1.1rem;
     padding: 8px 16px;
     display: block;
-    border-radius: 8px;
+    border-radius: 8px; /* Rounded corners for links */
     transition: background-color 0.3s ease;
 }
 
 .nav-menu ul li a:hover {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.1); /* Light hover effect */
 }
 
 /* Sections */
 .section {
-    padding: 60px 20px;
-    margin: 40px 0;
-    background-color: rgba(0, 0, 0, 0.3);
-    border-radius: 30px 60px 30px 60px;
-    box-shadow: 0 8px 24px rgba(255, 255, 255, 0.1);
+    padding: 40px 20px;
+    background-color: #00000050; /* Black background for sections */
+    margin: 20px 0;
+    border-radius: 30px 60px 30px 60px; /* Asymmetric rounded corners */
+    box-shadow: 0 8px 24px rgba(255, 255, 255, 0.1); /* Soft glow effect */
     text-align: center;
-    transition: all 0.3s ease;
-    opacity: 0;
-    transform: translateX(-100%);
-    transition: opacity 0.8s ease, transform 0.8s ease;
+    transition: all 0.3s ease; /* Smooth transitions for hover effects */
 }
 
-.section.active {
-    opacity: 1;
-    transform: translateX(0);
+.section:hover {
+    transform: scale(1.02); /* Slight zoom on hover */
+    box-shadow: 0 12px 32px rgba(255, 255, 255, 0.2); /* Enhanced glow on hover */
 }
 
 .section h2 {
@@ -208,19 +258,43 @@ header:hover {
     margin: 0 auto 20px auto;
 }
 
-/* Image Styles */
-img {
-    border-radius: 15px;
-    object-fit: cover;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    width: 100%;
-    height: auto;
-    max-width: 300px; /* Consistent size */
+/* Horizontal Scroll for Images */
+.image-scroll-container {
+    display: flex;
+    overflow-x: auto;
+    gap: 20px;
+    padding: 20px 0;
+    scroll-snap-type: x mandatory;
+    justify-content: flex-start;
+    background-color: #00000041; /* Black background */
+    border-radius: 40px; /* Rounded corners */
+    box-shadow: 0 8px 24px rgba(255, 255, 255, 0.1); /* Soft glow effect */
+    transition: all 0.3s ease; /* Smooth transitions for hover effects */
 }
 
-img:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+.image-scroll-container:hover {
+    transform: scale(1.02); /* Slight zoom on hover */
+    box-shadow: 0 12px 32px rgba(255, 255, 255, 0.2); /* Enhanced glow on hover */
+}
+
+.image-scroll-container img {
+    width: 300px;
+    height: 200px;
+    border-radius: 10px;
+    object-fit: cover;  /* Clean fit */
+    scroll-snap-align: start;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.image-scroll-container img:hover {
+    transform: scale(1.05); /* Subtle zoom */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Soft shadow on hover */
+}
+
+.image-scroll-container p {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 1rem;
 }
 
 /* Party Structures Grid */
@@ -229,6 +303,15 @@ img:hover {
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 20px;
     padding: 20px;
+    background-color: #0000004b; /* Black background */
+    border-radius: 40px; /* Rounded corners */
+    box-shadow: 0 8px 24px rgba(255, 255, 255, 0.1); /* Soft glow effect */
+    transition: all 0.3s ease; /* Smooth transitions for hover effects */
+}
+
+.party-structure-grid:hover {
+    transform: scale(1.02); /* Slight zoom on hover */
+    box-shadow: 0 12px 32px rgba(255, 255, 255, 0.2); /* Enhanced glow on hover */
 }
 
 .structure-member {
@@ -238,7 +321,14 @@ img:hover {
 .structure-member img {
     width: 100%;
     height: 200px;
-    border-radius: 15px;
+    border-radius: 10px;
+    object-fit: cover;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.structure-member img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .structure-member p {
@@ -252,29 +342,69 @@ img:hover {
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 20px;
     padding: 20px;
+    background-color: #0000003d; /* Black background */
+    border-radius: 40px; /* Rounded corners */
+    box-shadow: 0 8px 24px rgba(255, 255, 255, 0.1); /* Soft glow effect */
+    transition: all 0.3s ease; /* Smooth transitions for hover effects */
+}
+
+.gallery:hover {
+    transform: scale(1.02); /* Slight zoom on hover */
+    box-shadow: 0 12px 32px rgba(255, 255, 255, 0.2); /* Enhanced glow on hover */
 }
 
 .gallery img {
     width: 100%;
     height: 200px;
-    border-radius: 15px;
+    border-radius: 10px;
+    object-fit: cover;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 /* Footer */
 footer {
-    background-color: #000000;
-    color: #ffffff;
+    background-color: #000000; /* Black footer */
+    color: #ffffff; /* White footer text */
     text-align: center;
     padding: 20px;
     margin-top: 40px;
-    border-radius: 60px 60px 0 0;
-    box-shadow: 0 -8px 24px rgba(255, 255, 255, 0.1);
-    transition: all 0.3s ease;
+    border-radius: 60px 60px 0 0; /* Rounded top corners */
+    box-shadow: 0 -8px 24px rgba(255, 255, 255, 0.1); /* Soft glow effect */
+    transition: all 0.3s ease; /* Smooth transitions for hover effects */
 }
 
 footer:hover {
-    transform: scale(1.02);
-    box-shadow: 0 -12px 32px rgba(255, 255, 255, 0.2);
+    transform: scale(1.02); /* Slight zoom on hover */
+    box-shadow: 0 -12px 32px rgba(255, 255, 255, 0.2); /* Enhanced glow on hover */
+}
+
+/* Icons */
+.fas, .fab {
+    color: #c2b9b9; 
+    margin-right: 10px;
+    transition: color 0.3s ease;
+}
+
+.contact-icons a:hover .fas,
+.contact-icons a:hover .fab {
+    color: #747577; /* Dark icon color on hover */
+}
+
+/* Global Image Styles */
+img {
+    border-radius: 10px;  /* Rounded corners for images */
+    object-fit: cover;  /* Ensure professional image presentation */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+img:hover {
+    transform: scale(1.05); /* Subtle zoom on hover */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Soft shadow */
 }
 
 /* Responsive Design */
@@ -288,41 +418,25 @@ footer:hover {
     }
 
     .section {
-        padding: 40px 10px;
+        padding: 20px 10px;
+    }
+
+    .merchandise-slider {
+        flex-wrap: nowrap;
+    }
+
+    .merchandise-slider img {
+        width: 150px;
+        height: 150px;
     }
 
     .structure-member img,
     .gallery img {
         height: 150px;
     }
-
-    #splash-screen img {
-        width: 100px;
-        height: 100px;
-    }
 }
 
-/* Scroll Animation */
-@keyframes slideIn {
-    from {
-        opacity: 0;
-        transform: translateX(-100%);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-.section:nth-child(even) {
-    transform: translateX(100%);
-}
-
-.section:nth-child(even).active {
-    transform: translateX(0);
-}
-
-/* Additional Styles for Merchandise Section */
+/* Merchandise Section */
 .merchandise-slider {
     display: flex;
     overflow-x: auto;
@@ -405,7 +519,6 @@ footer:hover {
     line-height: 1.6;
     margin-bottom: 10px;
 }
-
 /* Reduce opacity of black sections to 30% except for header and footer */
 .section,
 .image-scroll-container,
