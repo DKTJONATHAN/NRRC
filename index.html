@@ -248,25 +248,20 @@
             }, 3000); // Splash screen stays for 3 seconds
         };
     
-        // Toggle hamburger menu
-        document.getElementById('hamburger-menu').addEventListener('click', (event) => {
-            event.stopPropagation();  // Prevent click event from propagating to document
-            document.getElementById('nav-menu').classList.toggle('active');
-            document.getElementById('hamburger-menu').classList.toggle('active');
-        });
-    
-        // Close hamburger menu when clicking anywhere else on the page
-        document.addEventListener('click', (event) => {
-            const menu = document.getElementById('nav-menu');
-            const hamburgerMenu = document.getElementById('hamburger-menu');
-    
-            // If the click is outside the hamburger menu and the nav menu, close the menu
-            if (!hamburgerMenu.contains(event.target) && !menu.contains(event.target)) {
-                menu.classList.remove('active');
-                hamburgerMenu.classList.remove('active');
-            }
-        });
+      document.getElementById('hamburger-menu').addEventListener('click', (event) => {
+    event.stopPropagation(); // Prevent click event from propagating to document
+    document.getElementById('nav-menu').classList.toggle('active');
+});
 
+// Close menu when clicking outside
+document.addEventListener('click', (event) => {
+    const menu = document.getElementById('nav-menu');
+    const hamburgerMenu = document.getElementById('hamburger-menu');
+
+    if (!hamburgerMenu.contains(event.target) {
+        menu.classList.remove('active');
+    }
+});
         // Read More/Less functionality
         function toggleReadMore() {
             const content = document.querySelectorAll('.read-more-content');
