@@ -163,6 +163,7 @@ header {
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     flex-direction: column;
     width: 200px;
+    z-index: 1001; /* Ensure the menu appears above other content */
 }
 
 .nav-menu.active {
@@ -192,23 +193,23 @@ header {
 
 /* Hero Section */
 #hero {
-    height: 100vh;
+    height: 70vh; /* Reduced height for better proportion */
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
     background: linear-gradient(135deg, rgba(255, 215, 0, 0.8), rgba(255, 204, 0, 0.8), rgba(255, 183, 0, 0.8), rgba(255, 165, 0, 0.8));
     color: #333;
-    padding: 0 40px;
+    padding: 0 20px; /* Added padding for better spacing */
 }
 
 .hero-content h1 {
-    font-size: 4rem;
+    font-size: 2.5rem; /* Reduced font size for better proportion */
     margin-bottom: 20px;
 }
 
 .hero-content p {
-    font-size: 1.5rem;
+    font-size: 1.2rem; /* Reduced font size for better proportion */
     margin-bottom: 30px;
 }
 
@@ -217,7 +218,7 @@ header {
     background: #ffa500;
     color: #fff;
     border-radius: 5px;
-    font-size: 1.2rem;
+    font-size: 1rem; /* Reduced font size for better proportion */
     transition: background 0.3s ease;
 }
 
@@ -227,9 +228,9 @@ header {
 
 /* Sections */
 .section {
-    padding: 80px 40px;
+    padding: 60px 20px; /* Adjusted padding for better spacing */
     background: rgba(255, 255, 255, 0.9);
-    margin: 40px auto;
+    margin: 20px auto;
     max-width: 1200px;
     border-radius: 15px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -304,6 +305,19 @@ footer {
 
     .header-left img {
         height: 50px; /* Adjusted logo size for mobile */
+    }
+
+    #hero {
+        height: 50vh; /* Further reduced height for mobile */
+        padding: 0 10px; /* Adjusted padding for mobile */
+    }
+
+    .hero-content h1 {
+        font-size: 2rem; /* Adjusted font size for mobile */
+    }
+
+    .hero-content p {
+        font-size: 1rem; /* Adjusted font size for mobile */
     }
 
     .section {
