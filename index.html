@@ -240,25 +240,25 @@
     </div>
     
     <script>
-        // Hide splash screen after 3 seconds and show main content
-        window.onload = function() {
-            setTimeout(() => {
-                document.getElementById('splash-screen').style.display = 'none';
-                document.getElementById('main-content').style.display = 'block';
-            }, 3000); // Splash screen stays for 3 seconds
-        };
-    
-      document.getElementById('hamburger-menu').addEventListener('click', (event) => {
+      window.onload = function() {
+    setTimeout(() => {
+        document.getElementById('splash-screen').style.display = 'none';
+        document.getElementById('main-content').style.display = 'block';
+    }, 3000); // Splash screen stays for 3 seconds
+};
+
+// Toggle hamburger menu
+document.getElementById('hamburger-menu').addEventListener('click', (event) => {
     event.stopPropagation(); // Prevent click event from propagating to document
     document.getElementById('nav-menu').classList.toggle('active');
 });
 
-// Close menu when clicking outside
+// Close hamburger menu when clicking outside
 document.addEventListener('click', (event) => {
     const menu = document.getElementById('nav-menu');
     const hamburgerMenu = document.getElementById('hamburger-menu');
 
-    if (!hamburgerMenu.contains(event.target) {
+    if (!hamburgerMenu.contains(event.target)) {
         menu.classList.remove('active');
     }
 });
