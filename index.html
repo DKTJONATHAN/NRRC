@@ -24,11 +24,19 @@
 </head>
 <body>
     
+    <!-- Splash Screen -->
     <div id="splash-screen">
-        <h1>Welcome to The Renaissance Party</h1>
-        <img src="./images/logo.png" alt="Logo" class="loading-logo">
-        <p>Loading...</p>
+        <div class="splash-content">
+            <img src="./images/logo.png" alt="Logo" class="loading-logo">
+            <h1>Welcome to The Renaissance Party</h1>
+            <div class="loading-animation">
+                <div class="loading-bar"></div>
+            </div>
+            <p>Loading...</p>
+        </div>
     </div>
+
+    <!-- Main Content -->
     <div id="main-content" style="display: none;">
         <header>
             <div class="header-left">
@@ -240,28 +248,30 @@
     </div>
     
     <script>
-      window.onload = function() {
-    setTimeout(() => {
-        document.getElementById('splash-screen').style.display = 'none';
-        document.getElementById('main-content').style.display = 'block';
-    }, 3000); // Splash screen stays for 3 seconds
-};
+        // Hide splash screen after 3 seconds and show main content
+        window.onload = function() {
+            setTimeout(() => {
+                document.getElementById('splash-screen').style.display = 'none';
+                document.getElementById('main-content').style.display = 'block';
+            }, 3000); // Splash screen stays for 3 seconds
+        };
 
-// Toggle hamburger menu
-document.getElementById('hamburger-menu').addEventListener('click', (event) => {
-    event.stopPropagation(); // Prevent click event from propagating to document
-    document.getElementById('nav-menu').classList.toggle('active');
-});
+        // Toggle hamburger menu
+        document.getElementById('hamburger-menu').addEventListener('click', (event) => {
+            event.stopPropagation(); // Prevent click event from propagating to document
+            document.getElementById('nav-menu').classList.toggle('active');
+        });
 
-// Close hamburger menu when clicking outside
-document.addEventListener('click', (event) => {
-    const menu = document.getElementById('nav-menu');
-    const hamburgerMenu = document.getElementById('hamburger-menu');
+        // Close hamburger menu when clicking outside
+        document.addEventListener('click', (event) => {
+            const menu = document.getElementById('nav-menu');
+            const hamburgerMenu = document.getElementById('hamburger-menu');
 
-    if (!hamburgerMenu.contains(event.target)) {
-        menu.classList.remove('active');
-    }
-});
+            if (!hamburgerMenu.contains(event.target)) {
+                menu.classList.remove('active');
+            }
+        });
+
         // Read More/Less functionality
         function toggleReadMore() {
             const content = document.querySelectorAll('.read-more-content');
@@ -276,7 +286,6 @@ document.addEventListener('click', (event) => {
                 }
             });
         }
-       
     </script>
 </body>
 </html>
