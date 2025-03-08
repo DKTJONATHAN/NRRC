@@ -121,6 +121,11 @@ header {
     align-items: center;
 }
 
+.header-left img {
+    width: auto; /* Allow the logo to maintain its aspect ratio */
+    height: 60px; /* Set a fixed height for the logo */
+}
+
 .header-center {
     flex: 1;
     justify-content: center;
@@ -298,8 +303,7 @@ footer {
     }
 
     .header-left img {
-        width: 100px; /* Adjusted logo size for mobile */
-        height: 100px; /* Adjusted logo size for mobile */
+        height: 50px; /* Adjusted logo size for mobile */
     }
 
     .section {
