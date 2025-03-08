@@ -14,19 +14,6 @@
     position: relative; /* To position the glitter effect */
 }
 
-
-/* Glitter Effect */
-.glitter {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100"%3E%3Ccircle cx="10" cy="10" r="2" fill="%23ffd700" /%3E%3Ccircle cx="30" cy="20" r="2" fill="%23ffd700" /%3E%3Ccircle cx="50" cy="10" r="2" fill="%23ffd700" /%3E%3Ccircle cx="70" cy="30" r="2" fill="%23ffd700" /%3E%3Ccircle cx="90" cy="10" r="2" fill="%23ffd700" /%3E%3C/svg%3E') repeat;
-    animation: glitterFall 2s linear infinite;
-    pointer-events: none; /* Ensures the glitter doesn't interfere with other interactions */
-    z-index: -1; /* Make sure glitter is behind content */
-}
 /* Neon Glow for Borders and Text */
 /* Bubbly, dynamic shape for sections */
 .section {
@@ -57,21 +44,6 @@
 }
 
 
-/* Glitter Animation */
-@keyframes glitterFall {
-    0% {
-        transform: translateY(-100%);
-        opacity: 0.8;
-    }
-    100% {
-        transform: translateY(100%);
-        opacity: 0.2;
-    }
-}
-
-/* Rest of your CSS remains the same */
-
-
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Playfair Display', serif;
     color: #ffffff; /* Dark headings for a professional feel */
@@ -98,6 +70,27 @@ a:hover {
 }
 
 /* Add a golden shiny effect over the background */
+/* Improved Golden Theme Styles with Gradient Background and Mobile Menu */
+
+:root {
+    --gold: #DAA520;
+    --black: #000000;
+    --white: #ffffff;
+    --grey: #D3D3D3;
+    --shadow: rgba(0, 0, 0, 0.7);
+}
+
+body {
+    background: linear-gradient(135deg, #FFD700, #DAA520, #B8860B, #8B6508);
+    color: var(--white);
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    line-height: 1.6;
+    position: relative;
+}
+
 body::before {
     content: ''; /* Empty content for the pseudo-element */
     position: absolute;
@@ -115,6 +108,110 @@ body::before {
     z-index: -1; /* Places the shiny effect below all content */
     filter: blur(10px); /* Soften the edges of the gradient */
 }
+
+@keyframes shineAnimation {
+    0% { transform: translateX(-50px) translateY(-50px); opacity: 0.5; }
+    50% { transform: translateX(50px) translateY(50px); opacity: 0.7; }
+    100% { transform: translateX(-50px) translateY(-50px); opacity: 0.5; }
+}
+
+header {
+    background: var(--gold);
+    box-shadow: 0 0 15px var(--shadow);
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    animation: slideDown 1s ease forwards;
+    border-bottom: 3px solid var(--black);
+}
+
+.site-title span {
+    color: var(--black);
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    padding: 0;
+    margin: 0;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+nav ul li a {
+    padding: 12px 25px;
+    border: 2px solid var(--black);
+    background: var(--gold);
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    font-weight: bold;
+    display: block;
+    text-align: center;
+}
+
+nav ul li a:hover {
+    background: var(--black);
+    color: var(--grey);
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background: var(--black);
+    color: var(--white);
+    border-top: 3px solid var(--gold);
+}
+
+.contact-icons a {
+    margin: 0 10px;
+    display: inline-block;
+    font-size: 28px;
+    transition: color 0.3s ease, transform 0.3s ease;
+    color: var(--black);
+}
+
+.contact-icons a:hover {
+    color: var(--grey);
+    transform: scale(1.2);
+}
+
+/* Hamburger Menu */
+.menu-icon {
+    display: none;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    nav ul {
+        display: none;
+        flex-direction: column;
+        background: var(--black);
+        padding: 20px;
+        position: absolute;
+        top: 70px;
+        right: 0;
+        width: 200px;
+        box-shadow: 0 0 15px var(--shadow);
+    }
+
+    nav ul.show {
+        display: flex;
+    }
+
+    .menu-icon {
+        display: block;
+    }
+}
+
 
 /* Splash Screen */
 #splash-screen {
