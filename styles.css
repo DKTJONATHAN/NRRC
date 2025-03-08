@@ -13,6 +13,44 @@
     line-height: 1.6;
     position: relative; /* To position the glitter effect */
 }
+/* Restore Original Splash Screen */
+#splash-screen {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: transparent; /* Restore transparency */
+    color: #ffffff; /* White text */
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Logo Animation */
+@keyframes zoomInOut {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+#splash-screen img {
+    width: 20vw; /* Default size */
+    max-width: 250px; /* Ensures it doesn’t get too big */
+    min-width: 100px; /* Prevents it from getting too small */
+    animation: zoomInOut 2s infinite ease-in-out;
+}
+
+/* Adjust Logo Size for Mobile */
+@media (max-width: 768px) {
+    #splash-screen img {
+        width: 15vw; /* Reduce size for smaller screens */
+        max-width: 150px;
+    }
+}
 
 /* Neon Glow for Borders and Text */
 /* Bubbly, dynamic shape for sections */
