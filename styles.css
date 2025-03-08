@@ -214,26 +214,11 @@ footer {
 
 
 /* Splash Screen */
-#splash-screen {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: transparent; /* Remove black background */
-    color: #ffffff; /* White text */
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-}
-
-@keyframes zoomInOut {
-    0%, 100% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.1);
-    }
+#splash-screen img {
+    width: 20vw; /* 20% of the viewport width */
+    max-width: 250px; /* Ensures it doesn’t get too big */
+    min-width: 100px; /* Prevents it from getting too small */
+    animation: zoomInOut 2s infinite ease-in-out;
 }
 
 /* Main Content */
