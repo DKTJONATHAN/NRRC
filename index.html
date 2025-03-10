@@ -290,6 +290,19 @@
                 }
             });
         }
+        // Add this to your existing script
+window.addEventListener('scroll', () => {
+    const scrollToTopButton = document.getElementById('scroll-to-top');
+    if (window.scrollY > 300) {
+        scrollToTopButton.classList.add('show');
+    } else {
+        scrollToTopButton.classList.remove('show');
+    }
+});
+
+document.getElementById('scroll-to-top').addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+});
     </script>
 </body>
 </html>
