@@ -225,16 +225,17 @@ header {
 .cta-button:hover {
     background: #ff8c00;
 }
+
+/* Glowing Rotating Rectangle Effect */
 .site-title {
     position: relative;
     display: inline-block;
     font-size: 3rem;
     color: #fff;
-    text-shadow: 0 0 5px #ffd700, 0 0 10px #ffd700, 0 0 20px #ffd700, 0 0 40px #ffd700;
+    padding: 10px; /* Add some padding to prevent the rectangle from overlapping the text */
 }
 
-.site-title::before,
-.site-title::after {
+.site-title::before {
     content: '';
     position: absolute;
     top: -10px;
@@ -243,32 +244,42 @@ header {
     bottom: -10px;
     border: 2px solid transparent;
     border-radius: 8px;
-    animation: glow 2s linear infinite;
+    animation: rotate-glow 4s linear infinite;
+    box-shadow: 0 0 10px #ffd700, 0 0 20px #ffd700, 0 0 40px #ffd700;
 }
 
-.site-title::before {
-    border-top-color: #ffd700;
-    border-right-color: #ffd700;
-    animation-delay: 0s;
-}
-
-.site-title::after {
-    border-bottom-color: #ffd700;
-    border-left-color: #ffd700;
-    animation-delay: 1s;
-}
-
-@keyframes glow {
+@keyframes rotate-glow {
     0% {
         transform: rotate(0deg);
-        opacity: 0;
+        border-top-color: #ffd700;
+        border-right-color: transparent;
+        border-bottom-color: transparent;
+        border-left-color: transparent;
+    }
+    25% {
+        border-top-color: transparent;
+        border-right-color: #ffd700;
+        border-bottom-color: transparent;
+        border-left-color: transparent;
     }
     50% {
-        opacity: 1;
+        border-top-color: transparent;
+        border-right-color: transparent;
+        border-bottom-color: #ffd700;
+        border-left-color: transparent;
+    }
+    75% {
+        border-top-color: transparent;
+        border-right-color: transparent;
+        border-bottom-color: transparent;
+        border-left-color: #ffd700;
     }
     100% {
         transform: rotate(360deg);
-        opacity: 0;
+        border-top-color: #ffd700;
+        border-right-color: transparent;
+        border-bottom-color: transparent;
+        border-left-color: transparent;
     }
 }
 
