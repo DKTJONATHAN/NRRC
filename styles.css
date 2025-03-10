@@ -28,7 +28,17 @@ img {
 img:hover {
     transform: scale(1.05); /* Slight zoom on hover */
 }
+/* Add this to your existing CSS */
+.section {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
 
+.section.slide-in {
+    opacity: 1;
+    transform: translateY(0);
+}
 /* Splash Screen */
 #splash-screen {
     display: flex;
