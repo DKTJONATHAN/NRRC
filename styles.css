@@ -104,8 +104,23 @@ img:hover {
     font-size: 1.2rem;
     color: #fff;
 }
+/* Add this to your existing CSS */
+.loading-logo {
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
 
 /* Header */
+/* Add this to your existing CSS */
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
 header {
     display: flex;
     justify-content: space-between;
@@ -225,9 +240,31 @@ header {
 .cta-button:hover {
     background: #ff8c00;
 }
+/* Add this to your existing CSS */
+#hero {
+    background: linear-gradient(135deg, #ffd700, #ffcc00, #ffb700, #ffa500);
+    background-size: 200% 200%;
+    animation: gradientAnimation 10s ease infinite;
+}
 
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
 
 /* Sections */
+/* Add this to your existing CSS */
+.section {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.section.slide-in {
+    opacity: 1;
+    transform: translateY(0);
+}
 .section {
     padding: 60px 20px; /* Adjusted padding for better spacing */
     background: rgba(255, 255, 255, 0.9);
@@ -278,6 +315,13 @@ header {
 @keyframes scroll {
     0% { transform: translateX(0); }
     100% { transform: translateX(-100%); }
+}
+/* Add this to your existing CSS */
+#hero {
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 /* Gallery */
@@ -333,4 +377,34 @@ footer {
     .gallery {
         grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     }
+}
+/* Add this to your existing CSS */
+html {
+    scroll-behavior: smooth;
+}
+/* Add this to your existing CSS */
+#scroll-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #ffa500;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background 0.3s ease, transform 0.3s ease;
+    display: none;
+}
+
+#scroll-to-top:hover {
+    background: #ff8c00;
+    transform: translateY(-5px);
+}
+
+#scroll-to-top.show {
+    display: block;
 }
