@@ -223,13 +223,14 @@ header {
     padding: 10px 20px;
     background: #ffa500;
     color: #fff;
-    border-radius: 5px;
+    border-radius: 30px;
     font-size: 1rem;
-    transition: background 0.3s ease;
+    transition: background 0.3s ease, transform 0.3s ease;
 }
 
 .cta-button:hover {
     background: #ff8c00;
+    transform: scale(1.05);
 }
 
 /* Sections */
@@ -402,13 +403,6 @@ footer {
     align-items: center;
 }
 
-.donate-form input, .donate-form button {
-    margin: 10px 0;
-    padding: 10px;
-    width: 80%;
-    max-width: 300px;
-}
-
 /* Blog Section */
 .blog-posts {
     display: grid;
@@ -435,52 +429,56 @@ footer {
     align-items: center;
 }
 
-.contact-form input, 
-.contact-form textarea {
-    margin: 10px 0;
+/* General Styles for Buttons and Text Inputs */
+button, input[type="text"], input[type="email"], input[type="password"], textarea {
     padding: 12px;
-    width: 80%;
-    max-width: 300px;
-    border-radius: 8px; /* Rounded corners */
+    border-radius: 8px;
     border: 1px solid #ccc;
     outline: none;
-    transition: border-color 0.3s ease-in-out;
-}
-
-.contact-form input:focus, 
-.contact-form textarea:focus {
-    border-color: #f39c12; /* Highlight on focus */
-}
-
-/* Styled Button */
-.contact-form button {
-    margin: 10px 0;
-    padding: 12px;
+    transition: all 0.3s ease-in-out;
+    font-size: 1rem;
     width: 80%;
     max-width: 300px;
-    border-radius: 30px; /* Fully rounded button */
-    background: linear-gradient(45deg, #ff5733, #ffbd33); /* Gradient color */
+    margin: 10px 0;
+}
+
+/* Button Specific Styles */
+button {
+    background: linear-gradient(45deg, #ff5733, #ffbd33);
     color: white;
-    font-size: 16px;
     font-weight: bold;
     border: none;
     cursor: pointer;
-    transition: transform 0.2s, background 0.3s ease-in-out;
+    text-align: center;
 }
 
-.contact-form button:hover {
+/* Text Input and Textarea Specific Styles */
+input[type="text"], input[type="email"], input[type="password"], textarea {
+    background-color: #fff;
+}
+
+/* Hover Effects */
+button:hover, input[type="text"]:hover, input[type="email"]:hover, input[type="password"]:hover, textarea:hover {
+    border-color: #f39c12;
+    transform: scale(1.05);
+}
+
+button:hover {
     background: linear-gradient(45deg, #ffbd33, #ff5733);
-    transform: scale(1.05); /* Slightly enlarge on hover */
 }
 
-/* Scroll Animation */
-.section {
-    opacity: 0;
-    transform: translateY(50px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+/* Focus Effects */
+input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus, textarea:focus {
+    border-color: #f39c12;
+    box-shadow: 0 0 8px rgba(243, 156, 18, 0.6);
 }
 
-.section.slide-in {
-    opacity: 1;
-    transform: translateY(0);
+/* Ensuring all buttons have the same rounded corners and transition */
+.cta-button, .contact-form button, .donate-form button, #scroll-to-top {
+    border-radius: 30px;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.cta-button:hover, .contact-form button:hover, .donate-form button:hover, #scroll-to-top:hover {
+    transform: scale(1.05);
 }
