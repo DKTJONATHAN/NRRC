@@ -269,6 +269,12 @@ header {
     object-fit: cover;
     border-radius: 50%;
 }
+.party-structure-grid img {
+    width: 100px; /* Adjust size as needed */
+    height: 100px; /* Ensure uniformity */
+    border-radius: 50%; /* Makes the image circular */
+    object-fit: cover; /* Ensures the image fills the circle properly */
+}
 
 /* Merchandise Slider */
 .merchandise-slider {
