@@ -435,12 +435,44 @@ footer {
     align-items: center;
 }
 
-.contact-form input, .contact-form textarea, .contact-form button {
+.contact-form input, 
+.contact-form textarea {
     margin: 10px 0;
-    padding: 10px;
+    padding: 12px;
     width: 80%;
     max-width: 300px;
+    border-radius: 8px; /* Rounded corners */
+    border: 1px solid #ccc;
+    outline: none;
+    transition: border-color 0.3s ease-in-out;
 }
+
+.contact-form input:focus, 
+.contact-form textarea:focus {
+    border-color: #f39c12; /* Highlight on focus */
+}
+
+/* Styled Button */
+.contact-form button {
+    margin: 10px 0;
+    padding: 12px;
+    width: 80%;
+    max-width: 300px;
+    border-radius: 30px; /* Fully rounded button */
+    background: linear-gradient(45deg, #ff5733, #ffbd33); /* Gradient color */
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.3s ease-in-out;
+}
+
+.contact-form button:hover {
+    background: linear-gradient(45deg, #ffbd33, #ff5733);
+    transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
 
 /* Scroll Animations */
 html {
