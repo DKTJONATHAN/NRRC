@@ -275,117 +275,119 @@
         </footer>
     </div>
 
-  // Hide splash screen after 3 seconds and show main content
-window.onload = function () {
-    setTimeout(() => {
-        document.getElementById('splash-screen').style.display = 'none';
-        document.getElementById('main-content').style.display = 'block';
-    }, 3000); // Splash screen stays for 3 seconds
-};
+ <script>
+    // Hide splash screen after 3 seconds and show main content
+    window.onload = function () {
+        setTimeout(() => {
+            document.getElementById('splash-screen').style.display = 'none';
+            document.getElementById('main-content').style.display = 'block';
+        }, 3000); // Splash screen stays for 3 seconds
+    };
 
-// Toggle hamburger menu
-document.getElementById('hamburger-menu').addEventListener('click', (event) => {
-    event.stopPropagation(); // Prevent click event from propagating to document
-    document.getElementById('nav-menu').classList.toggle('active');
-});
+    // Toggle hamburger menu
+    document.getElementById('hamburger-menu').addEventListener('click', (event) => {
+        event.stopPropagation(); // Prevent click event from propagating to document
+        document.getElementById('nav-menu').classList.toggle('active');
+    });
 
-// Close hamburger menu when clicking outside
-document.addEventListener('click', (event) => {
-    const menu = document.getElementById('nav-menu');
-    const hamburgerMenu = document.getElementById('hamburger-menu');
+    // Close hamburger menu when clicking outside
+    document.addEventListener('click', (event) => {
+        const menu = document.getElementById('nav-menu');
+        const hamburgerMenu = document.getElementById('hamburger-menu');
 
-    if (!hamburgerMenu.contains(event.target)) {
-        menu.classList.remove('active');
+        if (!hamburgerMenu.contains(event.target)) {
+            menu.classList.remove('active');
+        }
+    });
+
+    // Read More/Less functionality
+    function toggleReadMore() {
+        const content = document.querySelectorAll('.read-more-content');
+        const toggleButton = document.querySelector('.read-more-toggle');
+        content.forEach((paragraph) => {
+            if (paragraph.style.display === 'none' || paragraph.style.display === '') {
+                paragraph.style.display = 'block';
+                toggleButton.textContent = 'Read Less';
+            } else {
+                paragraph.style.display = 'none';
+                toggleButton.textContent = 'Read More';
+            }
+        });
     }
-});
 
-// Read More/Less functionality
-function toggleReadMore() {
-    const content = document.querySelectorAll('.read-more-content');
-    const toggleButton = document.querySelector('.read-more-toggle');
-    content.forEach((paragraph) => {
-        if (paragraph.style.display === 'none' || paragraph.style.display === '') {
-            paragraph.style.display = 'block';
-            toggleButton.textContent = 'Read Less';
+    // Scroll-to-top button functionality
+    window.addEventListener('scroll', () => {
+        const scrollToTopButton = document.getElementById('scroll-to-top');
+        if (window.scrollY > 300) {
+            scrollToTopButton.classList.add('show');
         } else {
-            paragraph.style.display = 'none';
-            toggleButton.textContent = 'Read More';
+            scrollToTopButton.classList.remove('show');
         }
     });
-}
 
-// Scroll-to-top button functionality
-window.addEventListener('scroll', () => {
-    const scrollToTopButton = document.getElementById('scroll-to-top');
-    if (window.scrollY > 300) {
-        scrollToTopButton.classList.add('show');
-    } else {
-        scrollToTopButton.classList.remove('show');
+    document.getElementById('scroll-to-top').addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Intersection Observer for sliding sections
+    document.addEventListener('DOMContentLoaded', function () {
+        const sections = document.querySelectorAll('.section');
+
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observerCallback = (entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        };
+
+        const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+
+        // Scroll Animation for Sections
+        const fadeInOnScroll = () => {
+            sections.forEach((section) => {
+                const sectionTop = section.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+
+                if (sectionTop < windowHeight * 0.85) {
+                    section.classList.add('slide-in');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', fadeInOnScroll);
+        fadeInOnScroll(); // Run on page load
+    });
+
+    // Slider functionality
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slider img');
+
+    function showSlide(index) {
+        slides.forEach((slide, i) => {
+            slide.classList.remove('active');
+            if (i === index) {
+                slide.classList.add('active');
+            }
+        });
     }
-});
 
-document.getElementById('scroll-to-top').addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-});
-
-// Intersection Observer for sliding sections
-document.addEventListener('DOMContentLoaded', function () {
-    const sections = document.querySelectorAll('.section');
-
-    const observerOptions = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.1
-    };
-
-    const observerCallback = (entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-                observer.unobserve(entry.target);
-            }
-        });
-    };
-
-    const observer = new IntersectionObserver(observerCallback, observerOptions);
-
-    sections.forEach(section => {
-        observer.observe(section);
-    });
-
-    // Scroll Animation for Sections
-    const fadeInOnScroll = () => {
-        sections.forEach((section) => {
-            const sectionTop = section.getBoundingClientRect().top;
-            const windowHeight = window.innerHeight;
-
-            if (sectionTop < windowHeight * 0.85) {
-                section.classList.add('slide-in');
-            }
-        });
-    };
-
-    window.addEventListener('scroll', fadeInOnScroll);
-    fadeInOnScroll(); // Run on page load
-});
-
-// Slider functionality
-let currentSlide = 0;
-const slides = document.querySelectorAll('.slider img');
-
-function showSlide(index) {
-    slides.forEach((slide, i) => {
-        slide.classList.remove('active');
-        if (i === index) {
-            slide.classList.add('active');
-        }
-    });
-}
-
-function nextSlide() {
-    currentSlide = (currentSlide + 1) % slides.length;
-    showSlide(currentSlide);
-}
+    function nextSlide() {
+        currentSlide = (currentSlide + 1) % slides.length;
+        showSlide(currentSlide);
+    }
+</script>
 
 </body>
 </html>
