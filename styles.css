@@ -592,9 +592,11 @@ input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focu
     text-align: center;
     max-width: 200px;
 }
-.animated-svg {
-    width: 100px;
-    height: 100px;
+.vote-icon {
+    font-size: 50px;
+    background: linear-gradient(45deg, black, green);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     animation: fadeIn 1s ease-in-out;
 }
 @keyframes fadeIn {
