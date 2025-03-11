@@ -242,12 +242,30 @@
 </script>
 
         <!-- Upcoming Events -->
-        <section id="events" class="slide-in section">
-            <h2><i class="fas fa-calendar-alt"></i> Upcoming Events</h2>
-            <p>Stay tuned for our exciting events!</p>
-        </section>
-
-        <!-- How to Vote -->
+<section id="events" class="slide-in section">
+    <h2><i class="fas fa-calendar-alt"></i> Upcoming Events</h2>
+    <p>Stay tuned for our exciting events!</p>
+    <div class="calendar-container">
+        <div class="calendar">
+            <div class="calendar-header">
+                <button class="nav-button" id="prev-month"><i class="fas fa-chevron-left"></i></button>
+                <h3 id="current-month">October 2023</h3>
+                <button class="nav-button" id="next-month"><i class="fas fa-chevron-right"></i></button>
+            </div>
+            <div class="calendar-grid">
+                <div class="day-name">Sun</div>
+                <div class="day-name">Mon</div>
+                <div class="day-name">Tue</div>
+                <div class="day-name">Wed</div>
+                <div class="day-name">Thu</div>
+                <div class="day-name">Fri</div>
+                <div class="day-name">Sat</div>
+                <!-- Days will be populated dynamically -->
+            </div>
+        </div>
+    </div>
+</section>
+ <!-- How to Vote -->
         <section id="vote" class="slide-in section">
             <h2><i class="fas fa-vote-yea"></i> How to Vote</h2>
             <p>Voting is a crucial part of our democracy. Here’s how you can make your voice heard:</p>
@@ -476,6 +494,71 @@
         currentSlide = (currentSlide + 1) % slides.length;
         showSlide(currentSlide);
     }
+     document.addEventListener('DOMContentLoaded', function () {
+    const calendarGrid = document.querySelector('.calendar-grid');
+    const currentMonthElement = document.getElementById('current-month');
+    const prevMonthButton = document.getElementById('prev-month');
+    const nextMonthButton = document.getElementById('next-month');
+
+    let currentDate = new Date();
+    let currentMonth = currentDate.getMonth();
+    let currentYear = currentDate.getFullYear();
+
+    function renderCalendar(month, year) {
+        const firstDay = new Date(year, month, 1);
+        const lastDay = new Date(year, month + 1, 0);
+        const daysInMonth = lastDay.getDate();
+        const startingDay = firstDay.getDay();
+
+        currentMonthElement.textContent = `${firstDay.toLocaleString('default', { month: 'long' })} ${year}`;
+
+        calendarGrid.innerHTML = '';
+
+        // Add day names
+        const dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+        dayNames.forEach(day => {
+            const dayElement = document.createElement('div');
+            dayElement.classList.add('day-name');
+            dayElement.textContent = day;
+            calendarGrid.appendChild(dayElement);
+        });
+
+        // Add empty days for the start of the month
+        for (let i = 0; i < startingDay; i++) {
+            const emptyDay = document.createElement('div');
+            emptyDay.classList.add('calendar-day', 'empty');
+            calendarGrid.appendChild(emptyDay);
+        }
+
+        // Add days of the month
+        for (let i = 1; i <= daysInMonth; i++) {
+            const dayElement = document.createElement('div');
+            dayElement.classList.add('calendar-day');
+            dayElement.textContent = i;
+            calendarGrid.appendChild(dayElement);
+        }
+    }
+
+    prevMonthButton.addEventListener('click', () => {
+        currentMonth--;
+        if (currentMonth < 0) {
+            currentMonth = 11;
+            currentYear--;
+        }
+        renderCalendar(currentMonth, currentYear);
+    });
+
+    nextMonthButton.addEventListener('click', () => {
+        currentMonth++;
+        if (currentMonth > 11) {
+            currentMonth = 0;
+            currentYear++;
+        }
+        renderCalendar(currentMonth, currentYear);
+    });
+
+    renderCalendar(currentMonth, currentYear);
+});
 </script>
 
 </body>
