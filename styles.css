@@ -251,29 +251,31 @@ header {
     transform: translateY(0);
 }
 
-/* Party Structures Grid */
 .party-structure-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px;
-    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Centers items horizontally */
+    gap: 20px; /* Adds spacing between items */
+}
+
+.structure-member {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers image and text */
+    text-align: center;
+    width: 150px; /* Adjust based on your design */
+}
+
+.structure-member img {
+    width: 120px; /* Ensures uniform size */
+    height: 120px;
+    border-radius: 50%; /* Makes the image circular */
+    object-fit: cover; /* Ensures the image fills the circle properly */
+    border: 3px solid #fff; /* Optional: Adds a border around images */
 }
 
 .structure-member {
     text-align: center;
-}
-
-.structure-member img {
-    width: 150px;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 50%;
-}
-.party-structure-grid img {
-    width: 100px; /* Adjust size as needed */
-    height: 100px; /* Ensure uniformity */
-    border-radius: 50%; /* Makes the image circular */
-    object-fit: cover; /* Ensures the image fills the circle properly */
 }
 
 /* Merchandise Slider */
