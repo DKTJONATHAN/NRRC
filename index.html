@@ -238,18 +238,64 @@
             </div>
         </section>
 
-        <!-- Contact Us -->
-        <section id="contact" class="slide-in section">
-            <h2><i class="fas fa-envelope"></i> Contact Us</h2>
-            <p>Get in touch for more information.</p>
-            <form class="contact-form">
-                <input type="text" placeholder="First Name" required>
-                <input type="text" placeholder="Last Name" required>
-                <input type="tel" placeholder="Phone Number" required>
-                <input type="text" placeholder="Subject" required>
-                <textarea placeholder="Your Message" required></textarea>
-                <button type="submit">Send Message</button>
-            </form>
+  <!-- Contact Us -->
+<section id="contact" class="slide-in section">
+    <h2><i class="fas fa-envelope"></i> Contact Us</h2>
+    <p>Get in touch for more information.</p>
+    <form id="contact-form" action="https://formspree.io/f/mwplkqpk" method="POST">
+        <input type="text" name="firstName" placeholder="First Name" required>
+        <input type="text" name="lastName" placeholder="Last Name" required>
+        <input type="tel" name="phone" placeholder="Phone Number" required>
+        <input type="text" name="subject" placeholder="Subject" required>
+        <textarea name="message" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+    </form>
+    <div id="form-message" style="display: none; margin-top: 20px; font-size: 1.2rem;"></div>
+
+    <div class="contact-icons">
+        <a href="tel:+1234567890" class="contact-icon"><i class="fas fa-phone"></i></a>
+        <a href="mailto:info@renaissanceparty.com" class="contact-icon"><i class="fas fa-envelope"></i></a>
+        <a href="https://twitter.com/renaissanceparty" class="contact-icon"><i class="fa-brands fa-x-twitter"></i></a>
+        <a href="https://instagram.com/renaissanceparty" class="contact-icon"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.google.com/maps/place/Renaissance+Party" class="contact-icon"><i class="fas fa-map-marker-alt"></i></a>
+        <a href="https://tiktok.com/@renaissanceparty" class="contact-icon"><i class="fab fa-tiktok"></i></a>
+        <a href="https://youtube.com/renaissanceparty" class="contact-icon"><i class="fab fa-youtube"></i></a>
+        <a href="https://linkedin.com/company/renaissanceparty" class="contact-icon"><i class="fab fa-linkedin"></i></a>
+        <a href="https://facebook.com/renaissanceparty" class="contact-icon"><i class="fab fa-facebook"></i></a>
+    </div>
+</section>
+
+<script>
+    // Formspree Form Submission
+    const contactForm = document.getElementById('contact-form');
+    const formMessage = document.getElementById('form-message');
+
+    contactForm.addEventListener('submit', async (e) => {
+        e.preventDefault(); // Prevent default form submission
+
+        const formData = new FormData(contactForm);
+        const response = await fetch(contactForm.action, {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'Accept': 'application/json'
+            }
+        });
+
+        if (response.ok) {
+            // Display success message
+            formMessage.textContent = 'Thank you! Your message has been sent.';
+            formMessage.style.color = 'green';
+            formMessage.style.display = 'block';
+            contactForm.reset(); // Clear the form
+        } else {
+            // Display error message
+            formMessage.textContent = 'Oops! Something went wrong. Please try again.';
+            formMessage.style.color = 'red';
+            formMessage.style.display = 'block';
+        }
+    });
+</script>
             
             <div class="contact-icons">
                 <a href="tel:+1234567890" class="contact-icon"><i class="fas fa-phone"></i></a>
