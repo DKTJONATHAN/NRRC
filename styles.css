@@ -254,28 +254,24 @@ header {
 .party-structure-grid {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center; /* Centers items horizontally */
-    gap: 20px; /* Adds spacing between items */
+    justify-content: center; /* Centers all items */
+    gap: 20px; /* Adds spacing */
 }
 
 .structure-member {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Centers image and text */
+    align-items: center; /* Ensures images and text align */
     text-align: center;
-    width: 150px; /* Adjust based on your design */
+    width: 150px; /* Uniform width for all items */
 }
 
 .structure-member img {
-    width: 120px; /* Ensures uniform size */
-    height: 120px;
-    border-radius: 50%; /* Makes the image circular */
-    object-fit: cover; /* Ensures the image fills the circle properly */
-    border: 3px solid #fff; /* Optional: Adds a border around images */
-}
-
-.structure-member {
-    text-align: center;
+    width: 120px !important; /* Forces same width */
+    height: 120px !important; /* Forces same height */
+    border-radius: 50% !important; /* Ensures circular shape */
+    object-fit: cover !important; /* Prevents stretching */
+    border: 3px solid #fff; /* Optional: Adds a white border */
 }
 
 /* Merchandise Slider */
