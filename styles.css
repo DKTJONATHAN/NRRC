@@ -482,3 +482,103 @@ input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focu
 .cta-button:hover, .contact-form button:hover, .donate-form button:hover, #scroll-to-top:hover {
     transform: scale(1.05);
 }
+/* Calendar Styles */
+.calendar-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.calendar {
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 100%;
+    max-width: 400px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.calendar:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.calendar-header h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.nav-button {
+    background: none;
+    border: none;
+    color: #007bff;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.nav-button:hover {
+    color: #0056b3;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+}
+
+.day-name, .calendar-day {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+}
+
+.day-name {
+    font-weight: bold;
+    color: #007bff;
+}
+
+.calendar-day {
+    background: #f0f0f0;
+    color: #333;
+    cursor: pointer;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.calendar-day:hover {
+    background: #007bff;
+    color: #fff;
+}
+
+.calendar-day.empty {
+    background: transparent;
+    cursor: default;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .calendar {
+        padding: 15px;
+    }
+
+    .calendar-header h3 {
+        font-size: 1rem;
+    }
+
+    .day-name, .calendar-day {
+        height: 30px;
+        font-size: 0.8rem;
+    }
+}
