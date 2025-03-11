@@ -168,19 +168,58 @@
             </div>
         </section>
 
-        <!-- Manifesto -->
-        <section id="manifesto" class="slide-in section">
-            <h2><i class="fas fa-scroll"></i> Manifesto</h2>
-            <p>Our manifesto is a declaration of the values, principles, and goals that guide us as a political movement. The Renaissance Party is driven by the belief that Kenya deserves better leadership – one rooted in justice, equality, and the pursuit of prosperity for all. Below is our roadmap for achieving a better future:</p>
-            <h3>Our Key Pledges:</h3>
-            <ul>
-                <li><strong>Economic Reforms:</strong> Creating a more inclusive economy that benefits every Kenyan.</li>
-                <li><strong>Education:</strong> Ensuring quality education for all, with a focus on innovation and technology.</li>
-                <li><strong>Health:</strong> Providing accessible and affordable healthcare for every citizen.</li>
-                <li><strong>Constitutional Integrity:</strong> Upholding the rule of law and protecting the constitution at all costs.</li>
-                <li><strong>Environmental Sustainability:</strong> Committing to policies that protect our environment and natural resources.</li>
-            </ul>
-        </section>
+   <!-- Manifesto -->
+<section id="manifesto" class="slide-in section">
+    <h2><i class="fas fa-scroll"></i> Manifesto</h2>
+    <p>Our manifesto is a declaration of the values, principles, and goals that guide us as a political movement. The Renaissance Party is driven by the belief that Kenya deserves better leadership – one rooted in justice, equality, and the pursuit of prosperity for all. Below is our roadmap for achieving a better future:</p>
+    
+    <h3>Our Key Pledges:</h3>
+    <ul>
+        <li><strong>Economic Reforms:</strong> Creating a more inclusive economy that benefits every Kenyan.</li>
+        <li><strong>Education:</strong> Ensuring quality education for all, with a focus on innovation and technology.</li>
+        <li><strong>Health:</strong> Providing accessible and affordable healthcare for every citizen.</li>
+        <li><strong>Constitutional Integrity:</strong> Upholding the rule of law and protecting the constitution at all costs.</li>
+        <li><strong>Environmental Sustainability:</strong> Committing to policies that protect our environment and natural resources.</li>
+    </ul>
+
+    <!-- Read More Section -->
+    <div id="manifesto-more" style="display: none;">
+        <h3>Youth Empowerment and Encouraging Political Participation</h3>
+        <p>Kenya’s youth are the future of our nation. However, far too often, young people are sidelined from meaningful opportunities in politics and governance. The Renaissance Party is committed to the empowerment of youth, not just in terms of job opportunities, but also in terms of encouraging active participation in political leadership.</p>
+        <ul>
+            <li><strong>Youth Empowerment and Engagement:</strong> We will create avenues for young people to be actively involved in governance, encouraging them to run for political office at all levels, including in Parliament, County Assemblies, and the Executive. We believe in a youth-driven transformation of Kenya.</li>
+            <li><strong>Leadership Training and Mentorship:</strong> We will establish leadership programs to equip young people with the skills necessary to navigate the political system, including governance, public service, diplomacy, and conflict resolution. This will be done through mentorship programs that focus on character-building and leadership ethics.</li>
+            <li><strong>Creating Employment for the Youth:</strong> The Renaissance Party recognizes the challenges of youth unemployment and will focus on creating more opportunities through entrepreneurship, skill development, and job creation in key sectors like technology, agriculture, manufacturing, and the service industry.</li>
+        </ul>
+
+        <h3>Justice, Truth, and Integrity</h3>
+        <p>The core principles of justice, truth, and integrity are non-negotiable values that will guide all actions of the Renaissance Party.</p>
+        <ul>
+            <li><strong>Eradicating Corruption:</strong> We are committed to tackling corruption at all levels of government. We will create independent anti-corruption bodies with the authority to investigate and prosecute corrupt officials without interference. Public servants will be held to the highest standards of accountability.</li>
+            <li><strong>Justice for All:</strong> We will ensure that every Kenyan has access to justice, regardless of their financial or social status. Our justice system will be fair, transparent, and accessible. We will strengthen institutions that safeguard the rule of law and ensure equal rights for all citizens.</li>
+            <li><strong>Upholding the Constitution:</strong> The Constitution of Kenya is the foundation of our nation’s democracy. We are committed to upholding it in its entirety and ensuring that all government actions align with its provisions. We will continue to champion the protection of human rights and ensure that the Bill of Rights is respected.</li>
+        </ul>
+
+        <!-- Add the rest of the manifesto sections similarly -->
+    </div>
+
+    <!-- Read More Button -->
+    <button id="read-more-btn" onclick="toggleManifesto()">Read More</button>
+</section>
+
+<script>
+    function toggleManifesto() {
+        const manifestoMore = document.getElementById('manifesto-more');
+        const readMoreBtn = document.getElementById('read-more-btn');
+        if (manifestoMore.style.display === 'none') {
+            manifestoMore.style.display = 'block';
+            readMoreBtn.textContent = 'Read Less';
+        } else {
+            manifestoMore.style.display = 'none';
+            readMoreBtn.textContent = 'Read More';
+        }
+    }
+</script>
 
         <!-- Upcoming Events -->
         <section id="events" class="slide-in section">
