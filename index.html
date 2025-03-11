@@ -7,20 +7,6 @@
     <link rel="stylesheet" href="./styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        /* Additional CSS for Read More/Less functionality */
-        .read-more-content {
-            display: none;
-        }
-        .read-more-toggle {
-            color: #007BFF;
-            cursor: pointer;
-            text-decoration: underline;
-        }
-        .read-more-toggle:hover {
-            color: #0056b3;
-        }
-    </style>
 </head>
 <body>
     
@@ -69,12 +55,48 @@
             </nav>
         </header>
 
+        <!-- Slider Section -->
+        <div class="slider">
+            <img src="./images/slide1.jpg" alt="Slide 1" class="active">
+            <img src="./images/slide2.jpg" alt="Slide 2">
+            <img src="./images/slide3.jpg" alt="Slide 3">
+        </div>
+
         <!-- Hero Section -->
         <section id="hero" class="slide-in section">
             <div class="hero-content">
                 <h1>Building a Better Kenya</h1>
                 <p>Join us in our mission to create a just, equitable, and prosperous nation for all.</p>
                 <a href="#about" class="cta-button">Learn More</a>
+            </div>
+        </section>
+
+        <!-- Donate Section -->
+        <section id="donate" class="donate-section section">
+            <h2><i class="fas fa-donate"></i> Donate</h2>
+            <p>Support our cause by making a donation. Every contribution helps us make a difference.</p>
+            <form class="donate-form">
+                <input type="text" placeholder="Full Name" required>
+                <input type="number" placeholder="Amount" required>
+                <button type="submit">Donate via M-Pesa</button>
+                <button type="submit">Donate via Paystack</button>
+            </form>
+        </section>
+
+        <!-- Blog/News Section -->
+        <section id="blog" class="section">
+            <h2><i class="fas fa-newspaper"></i> Blog & News</h2>
+            <div class="blog-posts">
+                <div class="blog-post">
+                    <h3>Post Title 1</h3>
+                    <p>Summary of the blog post...</p>
+                    <a href="#">Read More</a>
+                </div>
+                <div class="blog-post">
+                    <h3>Post Title 2</h3>
+                    <p>Summary of the blog post...</p>
+                    <a href="#">Read More</a>
+                </div>
             </div>
         </section>
 
@@ -228,6 +250,14 @@
         <section id="contact" class="slide-in section">
             <h2><i class="fas fa-envelope"></i> Contact Us</h2>
             <p>Get in touch for more information.</p>
+            <form class="contact-form">
+                <input type="text" placeholder="First Name" required>
+                <input type="text" placeholder="Last Name" required>
+                <input type="tel" placeholder="Phone Number" required>
+                <input type="text" placeholder="Subject" required>
+                <textarea placeholder="Your Message" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
             <div class="contact-icons">
                 <a href="tel:+1234567890" class="contact-icon"><i class="fas fa-phone"></i></a>
                 <a href="mailto:info@renaissanceparty.com" class="contact-icon"><i class="fas fa-envelope"></i></a>
@@ -240,95 +270,117 @@
                 <a href="https://facebook.com/renaissanceparty" class="contact-icon"><i class="fab fa-facebook"></i></a>
             </div>
         </section>
-        <!-- Add this before the closing </body> tag -->
-<button id="scroll-to-top" title="Go to top">
-    <i class="fas fa-arrow-up"></i>
-</button>
+
+        <!-- Scroll to Top Button -->
+        <button id="scroll-to-top" title="Go to top">
+            <i class="fas fa-arrow-up"></i>
+        </button>
 
         <!-- Footer -->
         <footer>
             <p>&copy; 2025 The Renaissance Party. All rights reserved.</p>
         </footer>
     </div>
+
     <script>
-    // Hide splash screen after 3 seconds and show main content
-    window.onload = function() {
-        setTimeout(() => {
-            document.getElementById('splash-screen').style.display = 'none';
-            document.getElementById('main-content').style.display = 'block';
-        }, 3000); // Splash screen stays for 3 seconds
-    };
+        // Hide splash screen after 3 seconds and show main content
+        window.onload = function() {
+            setTimeout(() => {
+                document.getElementById('splash-screen').style.display = 'none';
+                document.getElementById('main-content').style.display = 'block';
+            }, 3000); // Splash screen stays for 3 seconds
+        };
 
-    // Toggle hamburger menu
-    document.getElementById('hamburger-menu').addEventListener('click', (event) => {
-        event.stopPropagation(); // Prevent click event from propagating to document
-        document.getElementById('nav-menu').classList.toggle('active');
-    });
+        // Toggle hamburger menu
+        document.getElementById('hamburger-menu').addEventListener('click', (event) => {
+            event.stopPropagation(); // Prevent click event from propagating to document
+            document.getElementById('nav-menu').classList.toggle('active');
+        });
 
-    // Close hamburger menu when clicking outside
-    document.addEventListener('click', (event) => {
-        const menu = document.getElementById('nav-menu');
-        const hamburgerMenu = document.getElementById('hamburger-menu');
+        // Close hamburger menu when clicking outside
+        document.addEventListener('click', (event) => {
+            const menu = document.getElementById('nav-menu');
+            const hamburgerMenu = document.getElementById('hamburger-menu');
 
-        if (!hamburgerMenu.contains(event.target)) {
-            menu.classList.remove('active');
-        }
-    });
-
-    // Read More/Less functionality
-    function toggleReadMore() {
-        const content = document.querySelectorAll('.read-more-content');
-        const toggleButton = document.querySelector('.read-more-toggle');
-        content.forEach((paragraph) => {
-            if (paragraph.style.display === 'none' || paragraph.style.display === '') {
-                paragraph.style.display = 'block';
-                toggleButton.textContent = 'Read Less';
-            } else {
-                paragraph.style.display = 'none';
-                toggleButton.textContent = 'Read More';
+            if (!hamburgerMenu.contains(event.target)) {
+                menu.classList.remove('active');
             }
         });
-    }
 
-    // Scroll-to-top button functionality
-    window.addEventListener('scroll', () => {
-        const scrollToTopButton = document.getElementById('scroll-to-top');
-        if (window.scrollY > 300) {
-            scrollToTopButton.classList.add('show');
-        } else {
-            scrollToTopButton.classList.remove('show');
-        }
-    });
-
-    document.getElementById('scroll-to-top').addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-
-    // Intersection Observer for sliding sections
-    document.addEventListener('DOMContentLoaded', function() {
-        const sections = document.querySelectorAll('.section');
-
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.1
-        };
-
-        const observerCallback = (entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('slide-in');
-                    observer.unobserve(entry.target);
+        // Read More/Less functionality
+        function toggleReadMore() {
+            const content = document.querySelectorAll('.read-more-content');
+            const toggleButton = document.querySelector('.read-more-toggle');
+            content.forEach((paragraph) => {
+                if (paragraph.style.display === 'none' || paragraph.style.display === '') {
+                    paragraph.style.display = 'block';
+                    toggleButton.textContent = 'Read Less';
+                } else {
+                    paragraph.style.display = 'none';
+                    toggleButton.textContent = 'Read More';
                 }
             });
-        };
+        }
 
-        const observer = new IntersectionObserver(observerCallback, observerOptions);
-
-        sections.forEach(section => {
-            observer.observe(section);
+        // Scroll-to-top button functionality
+        window.addEventListener('scroll', () => {
+            const scrollToTopButton = document.getElementById('scroll-to-top');
+            if (window.scrollY > 300) {
+                scrollToTopButton.classList.add('show');
+            } else {
+                scrollToTopButton.classList.remove('show');
+            }
         });
-    });
-</script>
+
+        document.getElementById('scroll-to-top').addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Intersection Observer for sliding sections
+        document.addEventListener('DOMContentLoaded', function() {
+            const sections = document.querySelectorAll('.section');
+
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observerCallback = (entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            };
+
+            const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        });
+
+        // Slider functionality
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slider img');
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.remove('active');
+                if (i === index) {
+                    slide.classList.add('active');
+                }
+            });
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        setInterval(nextSlide, 5000); // Change slide every 5 seconds
+    </script>
 </body>
 </html>
