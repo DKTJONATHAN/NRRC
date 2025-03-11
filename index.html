@@ -404,22 +404,6 @@
             menu.classList.remove('active');
         }
     });
-
-    // Read More/Less functionality
-    function toggleReadMore() {
-        const content = document.querySelectorAll('.read-more-content');
-        const toggleButton = document.querySelector('.read-more-toggle');
-        content.forEach((paragraph) => {
-            if (paragraph.style.display === 'none' || paragraph.style.display === '') {
-                paragraph.style.display = 'block';
-                toggleButton.textContent = 'Read Less';
-            } else {
-                paragraph.style.display = 'none';
-                toggleButton.textContent = 'Read More';
-            }
-        });
-    }
-
     // Scroll-to-top button functionality
     window.addEventListener('scroll', () => {
         const scrollToTopButton = document.getElementById('scroll-to-top');
