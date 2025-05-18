@@ -200,19 +200,73 @@ header {
         width: 180px;
     }
 }
+/* Replace the existing .hamburger-menu styles with this */
 .hamburger-menu {
     display: flex;
-    flex-direction: column;
     cursor: pointer;
+    padding: 8px;
+    align-items: center;
+    justify-content: center;
 }
 
-.hamburger-menu .bar {
-    width: 25px;
-    height: 3px;
+.hamburger-menu .dot {
+    width: 6px;
+    height: 6px;
     background: #333;
-    margin: 4px 0;
+    border-radius: 50%;
+    margin: 0 2px;
 }
 
+/* Update the mobile responsive styles */
+@media (max-width: 768px) {
+    .header-right {
+        order: 2;
+        position: absolute;
+        right: 15px;
+        top: 25px; /* Adjusted to align better with logo */
+    }
+
+    .hamburger-menu {
+        padding: 10px; /* Slightly larger touch target */
+    }
+
+    .hamburger-menu .dot {
+        width: 7px;
+        height: 7px;
+        margin: 0 3px;
+    }
+
+    /* Keep all other existing mobile styles the same */
+    header {
+        padding: 15px !important;
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+        position: relative;
+    }
+
+    .header-left {
+        order: 0;
+        margin-bottom: 5px;
+    }
+
+    .header-left img {
+        height: 60px !important;
+        width: auto;
+        display: block;
+        margin: 0 auto;
+    }
+
+    .header-center {
+        order: 1;
+        width: 100%;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* ... rest of your existing mobile CSS ... */
+}
 .nav-menu {
     display: none;
     position: absolute;
