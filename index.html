@@ -54,7 +54,8 @@
                 </ul>
             </nav>
         </header>
- <!-- Hero Section -->
+
+        <!-- Hero Section -->
         <section id="hero" class="slide-in section">
             <div class="hero-content">
                 <h1>Building a Better Kenya</h1>
@@ -67,11 +68,12 @@
         <section id="donate" class="donate-section section">
             <h2><i class="fas fa-donate"></i> Donate</h2>
             <p>Support our cause by making a donation. Every contribution helps us make a difference.</p>
-            <form class="donate-form">
-                <input type="text" placeholder="Full Name" required>
-                <input type="number" placeholder="Amount" required>
-                <button type="submit">Donate via M-Pesa</button>
-                <button type="submit">Donate via Paystack</button>
+            <form id="mpesa-donate-form" class="donate-form">
+                <input type="text" id="donor-name" placeholder="Full Name" required>
+                <input type="tel" id="phone-number" placeholder="M-Pesa Phone Number (2547...)" required>
+                <input type="number" id="donation-amount" placeholder="Amount (KES)" min="10" required>
+                <button type="submit" id="mpesa-donate-btn">Donate via M-Pesa</button>
+                <div id="mpesa-feedback" style="display: none; margin-top: 15px; padding: 10px; border-radius: 5px;"></div>
             </form>
         </section>
 
@@ -484,189 +486,255 @@
             <i class="fas fa-arrow-up"></i>
         </button>
 
-        <!-- Footer -->
+       <!-- Footer -->
         <footer>
             <p>&copy; 2025 The NRRC. All rights reserved.</p>
         </footer>
     </div>
 
- <script>
-    // Hide splash screen after 3 seconds and show main content
-    window.onload = function () {
-        setTimeout(() => {
-            document.getElementById('splash-screen').style.display = 'none';
-            document.getElementById('main-content').style.display = 'block';
-        }, 3000); // Splash screen stays for 3 seconds
-    };
-
-    // Toggle hamburger menu
-    document.getElementById('hamburger-menu').addEventListener('click', (event) => {
-        event.stopPropagation(); // Prevent click event from propagating to document
-        document.getElementById('nav-menu').classList.toggle('active');
-    });
-
-    // Close hamburger menu when clicking outside
-    document.addEventListener('click', (event) => {
-        const menu = document.getElementById('nav-menu');
-        const hamburgerMenu = document.getElementById('hamburger-menu');
-
-        if (!hamburgerMenu.contains(event.target)) {
-            menu.classList.remove('active');
-        }
-    });
-    // Scroll-to-top button functionality
-    window.addEventListener('scroll', () => {
-        const scrollToTopButton = document.getElementById('scroll-to-top');
-        if (window.scrollY > 300) {
-            scrollToTopButton.classList.add('show');
-        } else {
-            scrollToTopButton.classList.remove('show');
-        }
-    });
-
-    document.getElementById('scroll-to-top').addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-
-    // Intersection Observer for sliding sections
-    document.addEventListener('DOMContentLoaded', function () {
-        const sections = document.querySelectorAll('.section');
-
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.1
+    <script>
+        // Hide splash screen after 3 seconds and show main content
+        window.onload = function () {
+            setTimeout(() => {
+                document.getElementById('splash-screen').style.display = 'none';
+                document.getElementById('main-content').style.display = 'block';
+            }, 3000); // Splash screen stays for 3 seconds
         };
 
-        const observerCallback = (entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        };
-
-        const observer = new IntersectionObserver(observerCallback, observerOptions);
-
-        sections.forEach(section => {
-            observer.observe(section);
+        // Toggle hamburger menu
+        document.getElementById('hamburger-menu').addEventListener('click', (event) => {
+            event.stopPropagation(); // Prevent click event from propagating to document
+            document.getElementById('nav-menu').classList.toggle('active');
         });
 
-        // Scroll Animation for Sections
-        const fadeInOnScroll = () => {
-            sections.forEach((section) => {
-                const sectionTop = section.getBoundingClientRect().top;
-                const windowHeight = window.innerHeight;
+        // Close hamburger menu when clicking outside
+        document.addEventListener('click', (event) => {
+            const menu = document.getElementById('nav-menu');
+            const hamburgerMenu = document.getElementById('hamburger-menu');
 
-                if (sectionTop < windowHeight * 0.85) {
-                    section.classList.add('slide-in');
-                }
-            });
-        };
-
-        window.addEventListener('scroll', fadeInOnScroll);
-        fadeInOnScroll(); // Run on page load
-    });
-
-    // Slider functionality
-    let currentSlide = 0;
-    const slides = document.querySelectorAll('.slider img');
-
-    function showSlide(index) {
-        slides.forEach((slide, i) => {
-            slide.classList.remove('active');
-            if (i === index) {
-                slide.classList.add('active');
+            if (!hamburgerMenu.contains(event.target)) {
+                menu.classList.remove('active');
             }
         });
-    }
 
-    function nextSlide() {
-        currentSlide = (currentSlide + 1) % slides.length;
-        showSlide(currentSlide);
-    }
-     document.addEventListener('DOMContentLoaded', function () {
-    const calendarGrid = document.querySelector('.calendar-grid');
-    const currentMonthElement = document.getElementById('current-month');
-    const prevMonthButton = document.getElementById('prev-month');
-    const nextMonthButton = document.getElementById('next-month');
-
-    let currentDate = new Date();
-    let currentMonth = currentDate.getMonth();
-    let currentYear = currentDate.getFullYear();
-
-    function renderCalendar(month, year) {
-        const firstDay = new Date(year, month, 1);
-        const lastDay = new Date(year, month + 1, 0);
-        const daysInMonth = lastDay.getDate();
-        const startingDay = firstDay.getDay();
-
-        currentMonthElement.textContent = `${firstDay.toLocaleString('default', { month: 'long' })} ${year}`;
-
-        calendarGrid.innerHTML = '';
-
-        // Add day names
-        const dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-        dayNames.forEach(day => {
-            const dayElement = document.createElement('div');
-            dayElement.classList.add('day-name');
-            dayElement.textContent = day;
-            calendarGrid.appendChild(dayElement);
+        // Scroll-to-top button functionality
+        window.addEventListener('scroll', () => {
+            const scrollToTopButton = document.getElementById('scroll-to-top');
+            if (window.scrollY > 300) {
+                scrollToTopButton.classList.add('show');
+            } else {
+                scrollToTopButton.classList.remove('show');
+            }
         });
 
-        // Add empty days for the start of the month
-        for (let i = 0; i < startingDay; i++) {
-            const emptyDay = document.createElement('div');
-            emptyDay.classList.add('calendar-day', 'empty');
-            calendarGrid.appendChild(emptyDay);
+        document.getElementById('scroll-to-top').addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Intersection Observer for sliding sections
+        document.addEventListener('DOMContentLoaded', function () {
+            const sections = document.querySelectorAll('.section');
+
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observerCallback = (entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            };
+
+            const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+
+            // Scroll Animation for Sections
+            const fadeInOnScroll = () => {
+                sections.forEach((section) => {
+                    const sectionTop = section.getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+
+                    if (sectionTop < windowHeight * 0.85) {
+                        section.classList.add('slide-in');
+                    }
+                });
+            };
+
+            window.addEventListener('scroll', fadeInOnScroll);
+            fadeInOnScroll(); // Run on page load
+        });
+
+        // Slider functionality
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slider img');
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.remove('active');
+                if (i === index) {
+                    slide.classList.add('active');
+                }
+            });
         }
 
-        // Add days of the month
-        for (let i = 1; i <= daysInMonth; i++) {
-            const dayElement = document.createElement('div');
-            dayElement.classList.add('calendar-day');
-            dayElement.textContent = i;
-            calendarGrid.appendChild(dayElement);
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
         }
-    }
 
-    prevMonthButton.addEventListener('click', () => {
-        currentMonth--;
-        if (currentMonth < 0) {
-            currentMonth = 11;
-            currentYear--;
+        // Calendar functionality
+        document.addEventListener('DOMContentLoaded', function () {
+            const calendarGrid = document.querySelector('.calendar-grid');
+            const currentMonthElement = document.getElementById('current-month');
+            const prevMonthButton = document.getElementById('prev-month');
+            const nextMonthButton = document.getElementById('next-month');
+
+            let currentDate = new Date();
+            let currentMonth = currentDate.getMonth();
+            let currentYear = currentDate.getFullYear();
+
+            function renderCalendar(month, year) {
+                const firstDay = new Date(year, month, 1);
+                const lastDay = new Date(year, month + 1, 0);
+                const daysInMonth = lastDay.getDate();
+                const startingDay = firstDay.getDay();
+
+                currentMonthElement.textContent = `${firstDay.toLocaleString('default', { month: 'long' })} ${year}`;
+
+                calendarGrid.innerHTML = '';
+
+                // Add day names
+                const dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+                dayNames.forEach(day => {
+                    const dayElement = document.createElement('div');
+                    dayElement.classList.add('day-name');
+                    dayElement.textContent = day;
+                    calendarGrid.appendChild(dayElement);
+                });
+
+                // Add empty days for the start of the month
+                for (let i = 0; i < startingDay; i++) {
+                    const emptyDay = document.createElement('div');
+                    emptyDay.classList.add('calendar-day', 'empty');
+                    calendarGrid.appendChild(emptyDay);
+                }
+
+                // Add days of the month
+                for (let i = 1; i <= daysInMonth; i++) {
+                    const dayElement = document.createElement('div');
+                    dayElement.classList.add('calendar-day');
+                    dayElement.textContent = i;
+                    calendarGrid.appendChild(dayElement);
+                }
+            }
+
+            prevMonthButton.addEventListener('click', () => {
+                currentMonth--;
+                if (currentMonth < 0) {
+                    currentMonth = 11;
+                    currentYear--;
+                }
+                renderCalendar(currentMonth, currentYear);
+            });
+
+            nextMonthButton.addEventListener('click', () => {
+                currentMonth++;
+                if (currentMonth > 11) {
+                    currentMonth = 0;
+                    currentYear++;
+                }
+                renderCalendar(currentMonth, currentYear);
+            });
+
+            renderCalendar(currentMonth, currentYear);
+        });
+
+        // Toggle chairperson read more
+        function toggleChairpersonReadMore() {
+            const readMoreContent = document.getElementById('chairperson-read-more-content');
+            const readMoreBtn = document.querySelector('#message-from-chairperson button');
+            if (readMoreContent.style.display === 'none') {
+                readMoreContent.style.display = 'block';
+                readMoreBtn.textContent = 'Read Less';
+            } else {
+                readMoreContent.style.display = 'none';
+                readMoreBtn.textContent = 'Read More';
+            }
         }
-        renderCalendar(currentMonth, currentYear);
-    });
 
-    nextMonthButton.addEventListener('click', () => {
-        currentMonth++;
-        if (currentMonth > 11) {
-            currentMonth = 0;
-            currentYear++;
-        }
-        renderCalendar(currentMonth, currentYear);
-    });
-
-    renderCalendar(currentMonth, currentYear);
-});
-     
-    function toggleChairpersonReadMore() {
-        const readMoreContent = document.getElementById('chairperson-read-more-content');
-        const readMoreBtn = document.querySelector('#message-from-chairperson button');
-        if (readMoreContent.style.display === 'none') {
-            readMoreContent.style.display = 'block';
-            readMoreBtn.textContent = 'Read Less';
-        } else {
-            readMoreContent.style.display = 'none';
-            readMoreBtn.textContent = 'Read More';
-        }
-    }
-</script>
-    
-
+        // M-Pesa Donation Functionality
+        document.getElementById('mpesa-donate-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('donor-name').value;
+            const phone = document.getElementById('phone-number').value;
+            const amount = document.getElementById('donation-amount').value;
+            const feedback = document.getElementById('mpesa-feedback');
+            const button = document.getElementById('mpesa-donate-btn');
+            
+            // Validate phone number format (2547...)
+            if (!phone.startsWith('254') || phone.length !== 12) {
+                feedback.style.display = 'block';
+                feedback.style.backgroundColor = '#ffebee';
+                feedback.style.color = '#c62828';
+                feedback.innerHTML = '<i class="fas fa-exclamation-circle"></i> Please enter a valid M-Pesa number in format 2547XXXXXXXX';
+                return;
+            }
+            
+            // Validate amount
+            if (amount < 10) {
+                feedback.style.display = 'block';
+                feedback.style.backgroundColor = '#ffebee';
+                feedback.style.color = '#c62828';
+                feedback.innerHTML = '<i class="fas fa-exclamation-circle"></i> Minimum donation is KES 10';
+                return;
+            }
+            
+            // Disable button during processing
+            button.disabled = true;
+            button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+            
+            try {
+                // In a real implementation, you would call your backend here
+                // This is a simulation of what would happen
+                
+                feedback.style.display = 'block';
+                feedback.style.backgroundColor = '#e8f5e9';
+                feedback.style.color = '#2e7d32';
+                feedback.innerHTML = `<i class="fas fa-check-circle"></i> Request sent to ${phone}. Please check your phone to complete payment to till number 3155300`;
+                
+                // Simulate M-Pesa STK push (in reality, you'd need a backend)
+                console.log(`Simulated M-Pesa payment request:
+                    Name: ${name}
+                    Phone: ${phone}
+                    Amount: ${amount}
+                    Till: 3155300`);
+                
+                // Reset form after 5 seconds
+                setTimeout(() => {
+                    document.getElementById('mpesa-donate-form').reset();
+                    feedback.style.display = 'none';
+                    button.disabled = false;
+                    button.innerHTML = 'Donate via M-Pesa';
+                }, 5000);
+                
+            } catch (error) {
+                feedback.style.display = 'block';
+                feedback.style.backgroundColor = '#ffebee';
+                feedback.style.color = '#c62828';
+                feedback.innerHTML = `<i class="fas fa-exclamation-circle"></i> Error: ${error.message}`;
+                button.disabled = false;
+                button.innerHTML = 'Donate via M-Pesa';
+            }
+        });
+    </script>
 </body>
 </html>
-
-
