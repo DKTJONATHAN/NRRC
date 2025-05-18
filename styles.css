@@ -133,29 +133,63 @@ header {
     justify-content: center;
 }
 
+/* Mobile Responsive Fixes */
 @media (max-width: 768px) {
-    .header-center h1 {
-        font-size: 1.5rem; /* Reduced further to ensure one-line fit */
-        white-space: nowrap; /* Prevents line breaks */
-        overflow: hidden; /* Hide overflow if absolutely necessary */
-        text-overflow: ellipsis; /* Adds ... if text still overflows */
-    }
-    
-    /* Optional: Adjust header padding if needed */
     header {
-        padding: 15px 20px; /* Reduced padding */
+        padding: 15px 20px !important;
+        flex-wrap: wrap;
+        justify-content: space-between;
     }
     
-    /* Optional: Make logo smaller to create more space */
+    .header-center {
+        order: 1;
+        flex: 0 0 100%;
+        max-width: 100%;
+        text-align: center;
+        margin: 10px 0 5px;
+        padding: 0;
+    }
+    
+    .header-center h1 {
+        font-size: 1.5rem !important;
+        white-space: normal;
+        word-break: break-word;
+        margin: 0 auto;
+        line-height: 1.3;
+        padding: 0 10px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    
+    .header-left {
+        order: 0;
+        flex: 0 0 auto;
+    }
+    
+    .header-right {
+        order: 2;
+        flex: 0 0 auto;
+        margin-left: auto;
+    }
+    
     .header-left img {
-        height: 40px; /* Reduced from 50px */
+        height: 40px !important;
+    }
+    
+    .site-title {
+        display: inline;
+    }
+    
+    .title-highlight {
+        white-space: nowrap;
+    }
+    
+    /* Ensure nav menu stays properly positioned */
+    .nav-menu {
+        right: 20px;
+        top: 80px;
     }
 }
-
-.title-highlight {
-    color: #ffa500;
-}
-
 .hamburger-menu {
     display: flex;
     flex-direction: column;
