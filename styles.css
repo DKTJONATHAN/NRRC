@@ -200,42 +200,57 @@ header {
         width: 180px;
     }
 }
-/* Hamburger Menu Styles */
+/* Replace all existing hamburger menu styles with this */
 .hamburger-menu {
     display: flex;
     cursor: pointer;
-    padding: 15px;
+    padding: 10px 12px;
     align-items: center;
     justify-content: center;
-    background: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+    background: transparent;
     border: none;
-    border-radius: 50%;
-    position: fixed; /* Changed to fixed positioning */
+    position: fixed;
     right: 20px;
     top: 20px;
-    z-index: 1002; /* Higher than hero section */
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    z-index: 1002;
+}
+
+.hamburger-menu .dots-container {
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
 }
 
 .hamburger-menu .dot {
-    width: 8px;
-    height: 8px;
-    background: #ffa500; /* Orange highlight color */
+    width: 6px;
+    height: 6px;
+    background: #ffa500; /* Your orange color */
     border-radius: 50%;
-    margin: 0 3px;
+    display: block;
 }
 
-/* Mobile Responsive Adjustments */
+/* Hover effect */
+.hamburger-menu:hover .dot {
+    background: #e69500; /* Slightly darker orange */
+    transform: scale(1.1);
+}
+
+/* Mobile adjustments */
 @media (max-width: 768px) {
     .hamburger-menu {
         right: 15px;
         top: 15px;
-        padding: 12px;
     }
     
-    .nav-menu {
-        top: 70px !important; /* Ensure menu appears below button */
+    .hamburger-menu .dot {
+        width: 5px;
+        height: 5px;
     }
+}
+
+/* Make sure nav menu appears below */
+.nav-menu {
+    top: 60px !important;
 }
 
 /* Make sure hero content doesn't interfere */
