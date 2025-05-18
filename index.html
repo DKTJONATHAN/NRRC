@@ -680,12 +680,12 @@
             const feedback = document.getElementById('mpesa-feedback');
             const button = document.getElementById('mpesa-donate-btn');
             
-            // Validate phone number format (2547...)
+            // Validate phone number format (+2547...)
             if (!phone.startsWith('254') || phone.length !== 12) {
                 feedback.style.display = 'block';
                 feedback.style.backgroundColor = '#ffebee';
                 feedback.style.color = '#c62828';
-                feedback.innerHTML = '<i class="fas fa-exclamation-circle"></i> Please enter a valid M-Pesa number in format 2547XXXXXXXX';
+                feedback.innerHTML = '<i class="fas fa-exclamation-circle"></i> Please enter a valid M-Pesa number in format +2547XXXXXXXX';
                 return;
             }
             
