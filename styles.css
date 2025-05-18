@@ -200,18 +200,21 @@ header {
         width: 180px;
     }
 }
-/* Replace the existing hamburger menu styles with this */
 /* Hamburger Menu Styles */
 .hamburger-menu {
     display: flex;
     cursor: pointer;
-    padding: 12px 10px; /* Increased padding for better touch target */
+    padding: 15px;
     align-items: center;
     justify-content: center;
-    background: transparent;
+    background: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
     border: none;
-    position: relative;
+    border-radius: 50%;
+    position: fixed; /* Changed to fixed positioning */
+    right: 20px;
+    top: 20px;
     z-index: 1002; /* Higher than hero section */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 
 .hamburger-menu .dot {
@@ -220,41 +223,31 @@ header {
     background: #ffa500; /* Orange highlight color */
     border-radius: 50%;
     margin: 0 3px;
-    transition: all 0.3s ease;
-    box-shadow: 0 0 2px rgba(0,0,0,0.2); /* Slight shadow for better visibility */
-}
-
-/* Hover effect */
-.hamburger-menu:hover .dot {
-    transform: scale(1.2);
-    background: #ff8c00; /* Slightly darker orange on hover */
 }
 
 /* Mobile Responsive Adjustments */
 @media (max-width: 768px) {
     .hamburger-menu {
-        padding: 15px 12px; /* Larger touch area on mobile */
-        position: absolute;
         right: 15px;
-        top: 20px;
+        top: 15px;
+        padding: 12px;
     }
     
-    .hamburger-menu .dot {
-        width: 9px;
-        height: 9px;
-    }
-
-    /* Make sure menu appears above hero section */
     .nav-menu {
-        z-index: 1001;
-        top: 70px;
+        top: 70px !important; /* Ensure menu appears below button */
     }
+}
 
-    /* Ensure header stays above hero */
-    header {
-        z-index: 1000;
-        position: relative;
-    }
+/* Make sure hero content doesn't interfere */
+#hero {
+    position: relative;
+    z-index: 1; /* Lower than menu */
+}
+
+/* Header adjustments */
+header {
+    position: relative;
+    z-index: 1000;
 }
 
 /* Make sure hero content doesn't overlap */
