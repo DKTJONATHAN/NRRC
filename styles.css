@@ -200,7 +200,7 @@ header {
         width: 180px;
     }
 }
-/* Replace the existing .hamburger-menu styles with this */
+/* Replace the existing hamburger menu styles with this */
 .hamburger-menu {
     display: flex;
     cursor: pointer;
@@ -209,14 +209,16 @@ header {
     justify-content: center;
     background: transparent;
     border: none;
+    position: relative; /* Added for proper dropdown positioning */
 }
 
 .hamburger-menu .dot {
     width: 6px;
     height: 6px;
-    background: #ffa500; /* Using the highlight color */
+    background: #ffa500;
     border-radius: 50%;
     margin: 0 2px;
+    transition: transform 0.3s ease;
 }
 
 /* Mobile responsive adjustments */
@@ -229,50 +231,57 @@ header {
         width: 7px;
         height: 7px;
         margin: 0 3px;
-        background: #ffa500; /* Ensure color stays consistent */
     }
 
     .header-right {
         order: 2;
         position: absolute;
         right: 15px;
-        top: 25px; /* Aligns with logo height */
+        top: 25px;
     }
 
-    /* Keep all other existing mobile styles */
-    /* ... */
-}
-
-    /* Keep all other existing mobile styles the same */
-    header {
-        padding: 15px !important;
+    /* Keep the nav menu styles */
+    .nav-menu {
+        display: none;
+        position: absolute;
+        top: 70px;
+        right: 15px;
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         flex-direction: column;
-        align-items: center;
-        gap: 5px;
-        position: relative;
+        width: 180px;
+        z-index: 1001;
+        padding: 10px 0;
     }
 
-    .header-left {
-        order: 0;
-        margin-bottom: 5px;
+    .nav-menu.active {
+        display: flex;
     }
 
-    .header-left img {
-        height: 60px !important;
-        width: auto;
-        display: block;
-        margin: 0 auto;
-    }
-
-    .header-center {
-        order: 1;
-        width: 100%;
-        text-align: center;
+    .nav-menu ul {
+        list-style: none;
         margin: 0;
         padding: 0;
     }
 
-    /* ... rest of your existing mobile CSS ... */
+    .nav-menu ul li {
+        margin: 8px 0;
+        text-align: center;
+    }
+
+    .nav-menu ul li a {
+        font-size: 1rem;
+        font-weight: 700;
+        transition: color 0.3s ease;
+        display: block;
+        padding: 5px 15px;
+    }
+
+    .nav-menu ul li a:hover {
+        color: #ffa500;
+        background: rgba(255, 165, 0, 0.1);
+    }
 }
 .nav-menu {
     display: none;
