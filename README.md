@@ -1,11 +1,11 @@
-# The Renaissance Party
+# The National and Revolution Congress
 
 ## Project Overview
-"The Renaissance Party" is a mobile-friendly website project designed to provide an engaging landing page experience with an animated loading splash screen. The project aims to celebrate the spirit of the Renaissance through vibrant visuals and interactive elements.
+"The National and Revolution Congress" is a mobile-friendly website project designed to provide an engaging landing page experience with an animated loading splash screen. The project aims to celebrate the spirit of the Revolution through vibrant visuals and interactive elements.
 
 ## Project Structure
 ```
-The-Renaissance-Party
+The National and Revolution Congress
 ├── src
 │   ├── css
 │   │   └── styles.css
