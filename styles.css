@@ -133,9 +133,24 @@ header {
     justify-content: center;
 }
 
-.header-center h1 {
-        font-size: 1.8rem; /* Reduced from 2.5rem */
+@media (max-width: 768px) {
+    .header-center h1 {
+        font-size: 1.5rem; /* Reduced further to ensure one-line fit */
+        white-space: nowrap; /* Prevents line breaks */
+        overflow: hidden; /* Hide overflow if absolutely necessary */
+        text-overflow: ellipsis; /* Adds ... if text still overflows */
     }
+    
+    /* Optional: Adjust header padding if needed */
+    header {
+        padding: 15px 20px; /* Reduced padding */
+    }
+    
+    /* Optional: Make logo smaller to create more space */
+    .header-left img {
+        height: 40px; /* Reduced from 50px */
+    }
+}
 
 .title-highlight {
     color: #ffa500;
