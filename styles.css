@@ -201,44 +201,67 @@ header {
     }
 }
 /* Replace the existing hamburger menu styles with this */
+/* Hamburger Menu Styles */
 .hamburger-menu {
     display: flex;
     cursor: pointer;
-    padding: 8px;
+    padding: 12px 10px; /* Increased padding for better touch target */
     align-items: center;
     justify-content: center;
     background: transparent;
     border: none;
-    position: relative; /* Added for proper dropdown positioning */
+    position: relative;
+    z-index: 1002; /* Higher than hero section */
 }
 
 .hamburger-menu .dot {
-    width: 6px;
-    height: 6px;
-    background: #ffa500;
+    width: 8px;
+    height: 8px;
+    background: #ffa500; /* Orange highlight color */
     border-radius: 50%;
-    margin: 0 2px;
-    transition: transform 0.3s ease;
+    margin: 0 3px;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 2px rgba(0,0,0,0.2); /* Slight shadow for better visibility */
 }
 
-/* Mobile responsive adjustments */
+/* Hover effect */
+.hamburger-menu:hover .dot {
+    transform: scale(1.2);
+    background: #ff8c00; /* Slightly darker orange on hover */
+}
+
+/* Mobile Responsive Adjustments */
 @media (max-width: 768px) {
     .hamburger-menu {
-        padding: 10px;
+        padding: 15px 12px; /* Larger touch area on mobile */
+        position: absolute;
+        right: 15px;
+        top: 20px;
     }
     
     .hamburger-menu .dot {
-        width: 7px;
-        height: 7px;
-        margin: 0 3px;
+        width: 9px;
+        height: 9px;
     }
 
-    .header-right {
-        order: 2;
-        position: absolute;
-        right: 15px;
-        top: 25px;
+    /* Make sure menu appears above hero section */
+    .nav-menu {
+        z-index: 1001;
+        top: 70px;
     }
+
+    /* Ensure header stays above hero */
+    header {
+        z-index: 1000;
+        position: relative;
+    }
+}
+
+/* Make sure hero content doesn't overlap */
+#hero {
+    position: relative;
+    z-index: 1;
+}
 
     /* Keep the nav menu styles */
     .nav-menu {
