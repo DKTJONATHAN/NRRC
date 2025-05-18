@@ -134,31 +134,41 @@ header {
 }
 
 /* Mobile Responsive Fixes */
+/* Mobile Responsive Fixes - Preserved Highlights */
 @media (max-width: 768px) {
     header {
-        padding: 15px 20px !important;
+        padding: 15px !important;
         flex-wrap: wrap;
         justify-content: space-between;
+        gap: 10px;
     }
     
     .header-center {
         order: 1;
-        flex: 0 0 100%;
-        max-width: 100%;
+        flex: 1 0 100%;
         text-align: center;
-        margin: 10px 0 5px;
-        padding: 0;
+        margin: 5px 0;
+        padding: 0 5px;
+        min-width: 0; /* Fixes flexbox overflow */
     }
     
     .header-center h1 {
-        font-size: 1.5rem !important;
+        font-size: 1.4rem !important;
         white-space: normal;
-        word-break: break-word;
+        word-break: keep-all;
         margin: 0 auto;
         line-height: 1.3;
-        padding: 0 10px;
-        width: 100%;
-        box-sizing: border-box;
+        display: inline;
+    }
+    
+    /* Restored highlight colors */
+    .title-highlight {
+        color: #ffa500; /* Orange color */
+        white-space: nowrap;
+    }
+    
+    .full-stop {
+        color: #ffa500; /* Orange color for the dot */
     }
     
     .header-left {
@@ -169,20 +179,25 @@ header {
     .header-right {
         order: 2;
         flex: 0 0 auto;
-        margin-left: auto;
     }
     
     .header-left img {
         height: 40px !important;
     }
     
-    .site-title {
-        display: inline;
+    /* Adjusted container size */
+    .section {
+        padding: 40px 15px !important;
+        margin: 15px !important;
     }
     
-    .title-highlight {
-        white-space: nowrap;
+    /* Ensure nav menu stays properly positioned */
+    .nav-menu {
+        right: 15px;
+        top: 75px;
+        width: 180px;
     }
+}
     
     /* Ensure nav menu stays properly positioned */
     .nav-menu {
