@@ -134,26 +134,29 @@ header {
 }
 
 /* Mobile Responsive Fixes */
-/* Mobile Responsive Fixes - Centered Logo */
+/* Mobile Responsive Fixes - Centered Logo with Larger Size */
 @media (max-width: 768px) {
     header {
         padding: 15px !important;
-        flex-direction: column; /* Stack vertically */
-        align-items: center; /* Center everything */
-        gap: 5px; /* Reduced gap between logo and title */
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+        position: relative; /* Needed for absolute positioning of hamburger */
     }
 
     .header-left {
         order: 0;
-        margin-bottom: 5px; /* Space between logo and title */
+        margin-bottom: 5px;
     }
 
     .header-left img {
-        height: 50px !important; /* Slightly larger logo */
+        height: 60px !important; /* Increased from 50px to 60px */
+        width: auto; /* Maintain aspect ratio */
         display: block;
-        margin: 0 auto; /* Center the logo */
+        margin: 0 auto;
     }
 
+    /* Rest of your existing mobile CSS remains exactly the same */
     .header-center {
         order: 1;
         width: 100%;
@@ -177,7 +180,6 @@ header {
         top: 15px;
     }
 
-    /* Restored highlight colors */
     .title-highlight {
         color: #ffa500;
         white-space: nowrap;
@@ -187,13 +189,11 @@ header {
         color: #ffa500;
     }
 
-    /* Keep existing section styles */
     .section {
         padding: 40px 15px !important;
         margin: 15px !important;
     }
 
-    /* Adjust nav menu position */
     .nav-menu {
         right: 15px;
         top: 70px;
