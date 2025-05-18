@@ -200,58 +200,7 @@ header {
         width: 180px;
     }
 }
-/* Replace all existing hamburger menu styles with this */
-.hamburger-menu {
-    display: flex;
-    cursor: pointer;
-    padding: 10px 12px;
-    align-items: center;
-    justify-content: center;
-    background: transparent;
-    border: none;
-    position: fixed;
-    right: 20px;
-    top: 20px;
-    z-index: 1002;
-}
 
-.hamburger-menu .dots-container {
-    display: flex;
-    flex-direction: row;
-    gap: 4px;
-}
-
-.hamburger-menu .dot {
-    width: 6px;
-    height: 6px;
-    background: #ffa500; /* Your orange color */
-    border-radius: 50%;
-    display: block;
-}
-
-/* Hover effect */
-.hamburger-menu:hover .dot {
-    background: #e69500; /* Slightly darker orange */
-    transform: scale(1.1);
-}
-
-/* Mobile adjustments */
-@media (max-width: 768px) {
-    .hamburger-menu {
-        right: 15px;
-        top: 15px;
-    }
-    
-    .hamburger-menu .dot {
-        width: 5px;
-        height: 5px;
-    }
-}
-
-/* Make sure nav menu appears below */
-.nav-menu {
-    top: 60px !important;
-}
 
 /* Make sure hero content doesn't interfere */
 #hero {
