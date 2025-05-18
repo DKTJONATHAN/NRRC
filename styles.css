@@ -207,34 +207,41 @@ header {
     padding: 8px;
     align-items: center;
     justify-content: center;
+    background: transparent;
+    border: none;
 }
 
 .hamburger-menu .dot {
     width: 6px;
     height: 6px;
-    background: #333;
+    background: #ffa500; /* Using the highlight color */
     border-radius: 50%;
     margin: 0 2px;
 }
 
-/* Update the mobile responsive styles */
+/* Mobile responsive adjustments */
 @media (max-width: 768px) {
-    .header-right {
-        order: 2;
-        position: absolute;
-        right: 15px;
-        top: 25px; /* Adjusted to align better with logo */
-    }
-
     .hamburger-menu {
-        padding: 10px; /* Slightly larger touch target */
+        padding: 10px;
     }
-
+    
     .hamburger-menu .dot {
         width: 7px;
         height: 7px;
         margin: 0 3px;
+        background: #ffa500; /* Ensure color stays consistent */
     }
+
+    .header-right {
+        order: 2;
+        position: absolute;
+        right: 15px;
+        top: 25px; /* Aligns with logo height */
+    }
+
+    /* Keep all other existing mobile styles */
+    /* ... */
+}
 
     /* Keep all other existing mobile styles the same */
     header {
